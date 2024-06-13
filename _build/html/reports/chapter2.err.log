@@ -1,0 +1,77 @@
+Traceback (most recent call last):
+  File "/Users/apollo/Documents/Athena/myenv/lib/python3.12/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Users/apollo/Documents/Athena/myenv/lib/python3.12/site-packages/nbclient/client.py", line 1314, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/apollo/Documents/Athena/myenv/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.3/Frameworks/Python.framework/Versions/3.12/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/Users/apollo/Documents/Athena/myenv/lib/python3.12/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/Users/apollo/Documents/Athena/myenv/lib/python3.12/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/apollo/Documents/Athena/myenv/lib/python3.12/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Set working directory (adjust to your specific path)
+setwd("~/documents/athena/jensens/")
+
+# Install necessary packages if not already installed
+suppressWarnings({
+  if (!requireNamespace("ggplot2", quietly = TRUE)) install.packages("ggplot2")
+  if (!requireNamespace("RColorBrewer", quietly = TRUE)) install.packages("RColorBrewer")
+  if (!requireNamespace("reshape2", quietly = TRUE)) install.packages("reshape2")
+})
+
+# Load necessary libraries
+suppressWarnings({
+  library(ggplot2)
+  library(RColorBrewer)
+  library(reshape2)
+})
+
+# Set seed for reproducibility
+set.seed(19680801)
+
+# Generate data
+N <- 10
+data <- sapply(0:(N-1), function(ii) log10(seq(1, 100, length.out = 100)) + rnorm(100) + ii)
+
+# Convert data to a data frame for ggplot2
+df <- as.data.frame(data)
+df$index <- 1:100
+df_long <- suppressWarnings(melt(df, id.vars = "index"))
+
+# Create a custom color palette
+colors <- colorRampPalette(rev(brewer.pal(11, "Spectral")))(N)
+
+# Plot the data
+p <- suppressWarnings(ggplot(df_long, aes(x = index, y = value, color = factor(variable))) +
+  geom_line(size = 0.5) +
+  scale_color_manual(values = colors, name = "Series",
+                     labels = paste0("Series ", 1:N)) +
+  theme_minimal() +
+  theme(legend.position = "top") +
+  labs(title = "Logarithmic Data with Random Noise",
+       x = "Index",
+       y = "Value"))
+
+# Display the plot
+suppressWarnings(print(p))
+
+# Save the plot with a wider aspect ratio
+suppressWarnings(ggsave("r.png", plot = p, width = 20, height = 10))
+
+------------------
+
+
+Error in setwd("~/documents/athena/jensens/"): cannot change working directory
+Traceback:
+
+1. setwd("~/documents/athena/jensens/")
+
