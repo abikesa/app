@@ -185,7 +185,6 @@
 <li class="toctree-l1"><a class="reference internal" href="chapter5.html">Unix</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chapter6.html">Natural</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chapter7.html">Remote</a></li>
-<li class="toctree-l1"><a class="reference internal" href="webApp/index.html">Web App</a></li>
 </ul>
 
     </div>
@@ -392,7 +391,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#work-abikesa-key-g-sh">9 <code class="docutils literal notranslate"><span class="pre">work/abikesa_key_g.sh</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#work-abikesa-key-sh">10 <code class="docutils literal notranslate"><span class="pre">work/abikesa_key.sh</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#work-abikesa-ngoma-sh">11 <code class="docutils literal notranslate"><span class="pre">work/abikesa_ngoma.sh</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#work-abikesa-remove-duplicages-sh">12 <code class="docutils literal notranslate"><span class="pre">work/abikesa_remove_duplicages.sh</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#new-rmstuff-https-sh">12 <code class="docutils literal notranslate"><span class="pre">new/rmstuff_https.sh</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#work-abikesa-rmdir-sh">13 <code class="docutils literal notranslate"><span class="pre">work/abikesa_rmdir.sh</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#work-abikesa-rmfiles-sh">14 <code class="docutils literal notranslate"><span class="pre">work/abikesa_rmfiles.sh</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#work-abikesa-rmstuff-sh">15 <code class="docutils literal notranslate"><span class="pre">work/abikesa_rmstuff.sh</span></code></a></li>
@@ -523,6 +522,33 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xquartz">40 <code class="docutils literal notranslate"><span class="pre">XQuartz</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-myenv-sh">41 <code class="docutils literal notranslate"><span class="pre">setup_myenv.sh</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#git-config-global-http-sslverify-false">42 <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">http.sslVerify</span> <span class="pre">false</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pip-install-sphinx-5-0-6-0">43 <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">"sphinx&gt;=5.0,&lt;6.0"</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements-txt">44 <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pip-install-r-requirements-txt-jupyter-book-build"><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span> <span class="pre">&amp;&amp;</span> <span class="pre">jupyter-book</span> <span class="pre">build</span> <span class="pre">.</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#deploying">Deploying</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#on-netlify">On Netlify</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11"><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">credential-cache</span> <span class="pre">exit</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wiki-style-jb">45 <code class="docutils literal notranslate"><span class="pre">wiki-style</span> <span class="pre">jb</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#everyday">46 <code class="docutils literal notranslate"><span class="pre">everyday</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#myenv">1 <code class="docutils literal notranslate"><span class="pre">myenv</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clone-rm">2 <code class="docutils literal notranslate"><span class="pre">clone</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">rm</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#toc-yml">3 <code class="docutils literal notranslate"><span class="pre">_toc.yml</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">4 <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rm">5 <code class="docutils literal notranslate"><span class="pre">rm</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-jbb-https-sh">6 <code class="docutils literal notranslate"><span class="pre">new/jbb_https.sh</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">7 <code class="docutils literal notranslate"><span class="pre">ghp-import</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scp-ssh-id-rca">47 <code class="docutils literal notranslate"><span class="pre">scp</span> <span class="pre">~/.ssh/id_rca</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-transfer-ssh-key-from-poseidon-to-athena">Summary: Transfer SSH Key from Poseidon to Athena</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-commands-summary">Example Commands Summary</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -1213,8 +1239,9 @@ rm<span class="w"> </span>-rf<span class="w"> </span><span class="nv">$REPO_NAME
 </pre></div>
 </div>
 </section>
-<section id="work-abikesa-remove-duplicages-sh">
-<h2>12 <code class="docutils literal notranslate"><span class="pre">work/abikesa_remove_duplicages.sh</span></code><a class="headerlink" href="#work-abikesa-remove-duplicages-sh" title="Link to this heading">#</a></h2>
+<section id="new-rmstuff-https-sh">
+<h2>12 <code class="docutils literal notranslate"><span class="pre">new/rmstuff_https.sh</span></code><a class="headerlink" href="#new-rmstuff-https-sh" title="Link to this heading">#</a></h2>
+<p>Look out for the above <a class="reference external" href="https://abikesa.github.io/workflow/intro.html">program</a>. Thats because <code class="docutils literal notranslate"><span class="pre">work/abikesa_remove_duplicates.sh</span></code> was discontinued</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 
 <span class="c1"># Check if a directory path is provided</span>
@@ -3080,6 +3107,417 @@ deactivate
 </pre></div>
 </div>
 </section>
+<section id="git-config-global-http-sslverify-false">
+<h2>42 <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">http.sslVerify</span> <span class="pre">false</span></code><a class="headerlink" href="#git-config-global-http-sslverify-false" title="Link to this heading">#</a></h2>
+<p>Alright, let’s switch back to using HTTPS for your remote repository. Here’s how to resolve the issue using HTTPS:</p>
+<ol class="arabic">
+<li><p><strong>Set Remote URL Back to HTTPS</strong>:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>remote<span class="w"> </span>set-url<span class="w"> </span>origin<span class="w"> </span>https://github.com/username/repo.git
+</pre></div>
+</div>
+</li>
+<li><p><strong>Retry the Push</strong>:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>main
+</pre></div>
+</div>
+</li>
+<li><p><strong>If You Encounter the SSL Error Again</strong>:
+Since we increased the HTTP post buffer and switched to HTTP/1.1, we can try a few more steps to resolve the SSL issue.</p>
+<ul>
+<li><p><strong>Disable SSL Verification</strong>:
+This is not recommended for regular use due to security risks, but it can help diagnose the problem:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>http.sslVerify<span class="w"> </span><span class="nb">false</span>
+</pre></div>
+</div>
+<p>Then try the push again.</p>
+</li>
+<li><p><strong>Check GitHub Status</strong>:
+Make sure GitHub is not experiencing any issues by checking <a class="reference external" href="https://www.githubstatus.com/">GitHub Status</a>.</p></li>
+<li><p><strong>Reauthenticate</strong>:
+Sometimes, clearing saved credentials can help:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>credential-cache<span class="w"> </span><span class="nb">exit</span>
+</pre></div>
+</div>
+<p>Then try the push again. You might be prompted to enter your username and password.</p>
+</li>
+<li><p><strong>Update Git</strong>:
+Ensure your Git version is up-to-date. You can download the latest version from <a class="reference external" href="https://git-scm.com/">Git’s official website</a>.</p></li>
+</ul>
+</li>
+</ol>
+<p>If the push is successful, you can turn SSL verification back on for security reasons:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>http.sslVerify<span class="w"> </span><span class="nb">true</span>
+</pre></div>
+</div>
+<p>Try these steps, and let me know if you encounter any specific errors during the process.</p>
+</section>
+<section id="pip-install-sphinx-5-0-6-0">
+<h2>43 <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">&quot;sphinx&gt;=5.0,&lt;6.0&quot;</span></code><a class="headerlink" href="#pip-install-sphinx-5-0-6-0" title="Link to this heading">#</a></h2>
+<p>We are caught in a <a class="reference external" href="https://abikesa.github.io/wikitemplate/">dependency conflict</a> due to the required versions of sphinx and other extensions. Let’s take a different approach:</p>
+<ol class="arabic simple">
+<li><p>Uninstall all currently installed versions.</p></li>
+<li><p>Install compatible versions of the packages together, ensuring there are no version conflicts.</p></li>
+</ol>
+<p>Let’s uninstall the current packages again:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>uninstall<span class="w"> </span>sphinx<span class="w"> </span>sphinx-panels<span class="w"> </span>jupyter-book<span class="w"> </span>sphinxcontrib-applehelp<span class="w"> </span>sphinxcontrib-devhelp<span class="w"> </span>sphinxcontrib-jsmath<span class="w"> </span>sphinxcontrib-htmlhelp<span class="w"> </span>sphinxcontrib-serializinghtml<span class="w"> </span>sphinxcontrib-qthelp<span class="w"> </span>sphinx-design<span class="w"> </span>sphinx-external-toc<span class="w"> </span>pydata-sphinx-theme<span class="w"> </span>sphinx-jupyterbook-latex<span class="w"> </span>sphinx-book-theme<span class="w"> </span>myst-nb<span class="w"> </span>myst-parser
+</pre></div>
+</div>
+<p>Next, install the correct versions together:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="s2">&quot;sphinx&gt;=5.0,&lt;6.0&quot;</span> <span class="n">sphinxcontrib</span><span class="o">-</span><span class="n">applehelp</span> <span class="n">sphinxcontrib</span><span class="o">-</span><span class="n">devhelp</span> <span class="n">sphinxcontrib</span><span class="o">-</span><span class="n">jsmath</span> <span class="n">sphinxcontrib</span><span class="o">-</span><span class="n">htmlhelp</span> <span class="n">sphinxcontrib</span><span class="o">-</span><span class="n">serializinghtml</span> <span class="n">sphinxcontrib</span><span class="o">-</span><span class="n">qthelp</span> <span class="n">sphinx</span><span class="o">-</span><span class="n">design</span> <span class="s2">&quot;sphinx-external-toc&lt;2&quot;</span> <span class="s2">&quot;pydata-sphinx-theme&gt;=0.15.2&quot;</span> <span class="s2">&quot;sphinx-jupyterbook-latex&lt;2&quot;</span> <span class="s2">&quot;sphinx-book-theme&gt;=1.1.0,&lt;2&quot;</span> <span class="s2">&quot;myst-nb&lt;3&quot;</span> <span class="s2">&quot;myst-parser&lt;3&quot;</span> <span class="s2">&quot;jupyter-book&gt;=0.12.0&quot;</span> <span class="s2">&quot;sphinx-thebe&gt;=0.3,&lt;1&quot;</span> <span class="n">sphinx</span><span class="o">-</span><span class="n">panels</span>
+</pre></div>
+</div>
+<p>This command should install compatible versions of the required packages. If there are any issues during installation, we will need to adjust the versions accordingly. Once installed, try building your Jupyter Book again:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>jb<span class="w"> </span>build<span class="w"> </span>nia/book/website
+</pre></div>
+</div>
+<p>If further adjustments are needed, please let me know.</p>
+</section>
+<section id="requirements-txt">
+<h2>44 <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code><a class="headerlink" href="#requirements-txt" title="Link to this heading">#</a></h2>
+<section id="pip-install-r-requirements-txt-jupyter-book-build">
+<h3><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span> <span class="pre">&amp;&amp;</span> <span class="pre">jupyter-book</span> <span class="pre">build</span> <span class="pre">.</span></code><a class="headerlink" href="#pip-install-r-requirements-txt-jupyter-book-build" title="Link to this heading">#</a></h3>
+<section id="deploying">
+<h4>Deploying<a class="headerlink" href="#deploying" title="Link to this heading">#</a></h4>
+<p><a class="reference external" href="https://abikesa.github.io/worthy/intro.html">First</a>, create a work directory &amp; environment</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/abikesa/workflow<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>mv<span class="w"> </span>workflow<span class="w"> </span>new<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>new/setup_myenv.sh<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">source</span><span class="w"> </span>myenv/bin/activate<span class="w"> </span>
+</pre></div>
+</div>
+</section>
+<section id="on-netlify">
+<h4>On Netlify<a class="headerlink" href="#on-netlify" title="Link to this heading">#</a></h4>
+<p>Next, navigate to your project template:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/the-turing-way/the-turing-way
+mv<span class="w"> </span>the-turing-way<span class="w"> </span>project
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Publish directory: <code class="docutils literal notranslate"><span class="pre">project/book/website/_build/html</span></code></p></li>
+<li><p>Base directory: <code class="docutils literal notranslate"><span class="pre">book/website</span></code></p></li>
+<li><p>Build command: <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span> <span class="pre">&amp;&amp;</span> <span class="pre">jupyter-book</span> <span class="pre">build</span> <span class="pre">.</span></code></p></li>
+<li><p>This will give an error, but after installing key files. So just ignore &amp; follow these instructions:</p></li>
+</ul>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>uninstall<span class="w"> </span>sphinx<span class="w"> </span>sphinx-panels<span class="w"> </span>jupyter-book<span class="w"> </span>sphinxcontrib-applehelp<span class="w"> </span>sphinxcontrib-devhelp<span class="w"> </span>sphinxcontrib-jsmath<span class="w"> </span>sphinxcontrib-htmlhelp<span class="w"> </span>sphinxcontrib-serializinghtml<span class="w"> </span>sphinxcontrib-qthelp<span class="w"> </span>sphinx-design<span class="w"> </span>sphinx-external-toc<span class="w"> </span>pydata-sphinx-theme<span class="w"> </span>sphinx-jupyterbook-latex<span class="w"> </span>sphinx-book-theme<span class="w"> </span>myst-nb<span class="w"> </span>myst-parser
+pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;sphinx&gt;=5.0,&lt;6.0&quot;</span><span class="w"> </span>sphinxcontrib-applehelp<span class="w"> </span>sphinxcontrib-devhelp<span class="w"> </span>sphinxcontrib-jsmath<span class="w"> </span>sphinxcontrib-htmlhelp<span class="w"> </span>sphinxcontrib-serializinghtml<span class="w"> </span>sphinxcontrib-qthelp<span class="w"> </span>sphinx-design<span class="w"> </span><span class="s2">&quot;sphinx-external-toc&lt;2&quot;</span><span class="w"> </span><span class="s2">&quot;pydata-sphinx-theme&gt;=0.15.2&quot;</span><span class="w"> </span><span class="s2">&quot;sphinx-jupyterbook-latex&lt;2&quot;</span><span class="w"> </span><span class="s2">&quot;sphinx-book-theme&gt;=1.1.0,&lt;2&quot;</span><span class="w"> </span><span class="s2">&quot;myst-nb&lt;3&quot;</span><span class="w"> </span><span class="s2">&quot;myst-parser&lt;3&quot;</span><span class="w"> </span><span class="s2">&quot;jupyter-book&gt;=0.12.0&quot;</span><span class="w"> </span><span class="s2">&quot;sphinx-thebe&gt;=0.3,&lt;1&quot;</span><span class="w"> </span>sphinx-panels
+jupyter-book<span class="w"> </span>build<span class="w"> </span>.
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id11">
+<h3><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">credential-cache</span> <span class="pre">exit</span></code><a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>credential-cache<span class="w"> </span><span class="nb">exit</span>
+<span class="nb">cd</span><span class="w"> </span>home/book/website
+git<span class="w"> </span>add<span class="w"> </span>./*
+</pre></div>
+</div>
+</section>
+</section>
+<section id="wiki-style-jb">
+<h2>45 <code class="docutils literal notranslate"><span class="pre">wiki-style</span> <span class="pre">jb</span></code><a class="headerlink" href="#wiki-style-jb" title="Link to this heading">#</a></h2>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># myenv</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/abikesa/workflow<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>mv<span class="w"> </span>workflow<span class="w"> </span>new<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>new/setup_myenv.sh<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">source</span><span class="w"> </span>myenv/bin/activate<span class="w"> </span>
+
+<span class="c1"># template</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/the-turing-way/the-turing-way
+mv<span class="w"> </span>the-turing-way<span class="w"> </span>kenny
+<span class="nb">cd</span><span class="w"> </span>kenny/book/website
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>jupyter-book<span class="w"> </span>build<span class="w"> </span>.
+
+<span class="c1"># error message</span>
+pip<span class="w"> </span>uninstall<span class="w"> </span>sphinx<span class="w"> </span>sphinx-panels<span class="w"> </span>jupyter-book<span class="w"> </span>sphinxcontrib-applehelp<span class="w"> </span>sphinxcontrib-devhelp<span class="w"> </span>sphinxcontrib-jsmath<span class="w"> </span>sphinxcontrib-htmlhelp<span class="w"> </span>sphinxcontrib-serializinghtml<span class="w"> </span>sphinxcontrib-qthelp<span class="w"> </span>sphinx-design<span class="w"> </span>sphinx-external-toc<span class="w"> </span>pydata-sphinx-theme<span class="w"> </span>sphinx-jupyterbook-latex<span class="w"> </span>sphinx-book-theme<span class="w"> </span>myst-nb<span class="w"> </span>myst-parser
+pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;sphinx&gt;=5.0,&lt;6.0&quot;</span><span class="w"> </span>sphinxcontrib-applehelp<span class="w"> </span>sphinxcontrib-devhelp<span class="w"> </span>sphinxcontrib-jsmath<span class="w"> </span>sphinxcontrib-htmlhelp<span class="w"> </span>sphinxcontrib-serializinghtml<span class="w"> </span>sphinxcontrib-qthelp<span class="w"> </span>sphinx-design<span class="w"> </span><span class="s2">&quot;sphinx-external-toc&lt;2&quot;</span><span class="w"> </span><span class="s2">&quot;pydata-sphinx-theme&gt;=0.15.2&quot;</span><span class="w"> </span><span class="s2">&quot;sphinx-jupyterbook-latex&lt;2&quot;</span><span class="w"> </span><span class="s2">&quot;sphinx-book-theme&gt;=1.1.0,&lt;2&quot;</span><span class="w"> </span><span class="s2">&quot;myst-nb&lt;3&quot;</span><span class="w"> </span><span class="s2">&quot;myst-parser&lt;3&quot;</span><span class="w"> </span><span class="s2">&quot;jupyter-book&gt;=0.12.0&quot;</span><span class="w"> </span><span class="s2">&quot;sphinx-thebe&gt;=0.3,&lt;1&quot;</span><span class="w"> </span>sphinx-panels
+jupyter-book<span class="w"> </span>build<span class="w"> </span>.
+
+<span class="c1"># big files</span>
+rm<span class="w"> </span>-rf<span class="w"> </span>figures
+rm<span class="w"> </span>-rf<span class="w"> </span>_build/html/_images
+
+<span class="c1"># parent directory</span>
+<span class="nb">cd</span><span class="w"> </span>~/documents/hades
+
+<span class="c1"># block ghp-import (use netlify or import manually)</span>
+new/jbb_https.sh
+</pre></div>
+</div>
+</section>
+<section id="everyday">
+<h2>46 <code class="docutils literal notranslate"><span class="pre">everyday</span></code><a class="headerlink" href="#everyday" title="Link to this heading">#</a></h2>
+<p>Create &amp; destroy, everyday! That should be our motto!!</p>
+<section id="myenv">
+<h3>1 <code class="docutils literal notranslate"><span class="pre">myenv</span></code><a class="headerlink" href="#myenv" title="Link to this heading">#</a></h3>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/abikesa/workflow<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>mv<span class="w"> </span>workflow<span class="w"> </span>new<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>new/setup_myenv.sh<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">source</span><span class="w"> </span>myenv/bin/activate<span class="w"> </span>
+</pre></div>
+</div>
+</section>
+<section id="clone-rm">
+<h3>2 <code class="docutils literal notranslate"><span class="pre">clone</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">rm</span></code><a class="headerlink" href="#clone-rm" title="Link to this heading">#</a></h3>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/the-turing-way/the-turing-way
+mv<span class="w"> </span>the-turing-way<span class="w"> </span>cnd
+</pre></div>
+</div>
+</section>
+<section id="toc-yml">
+<h3>3 <code class="docutils literal notranslate"><span class="pre">_toc.yml</span></code><a class="headerlink" href="#toc-yml" title="Link to this heading">#</a></h3>
+<p>Keep only 3 sections as template for structure</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>cat<span class="w"> </span>cnd/book/website/_toc.yml
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Welcome</p>
+<ul>
+<li><p><a class="reference external" href="http://index.md">index.md</a></p></li>
+</ul>
+</li>
+<li><p>Forward</p>
+<ul>
+<li><p><a class="reference external" href="http://forward.md">forward.md</a></p></li>
+<li><p><a class="reference external" href="http://background.md">background.md</a></p></li>
+</ul>
+</li>
+<li><p>Guide for Reproducible Research</p>
+<ul>
+<li><p><a class="reference external" href="http://reproducible-reseaarch.md">reproducible-reseaarch.md</a></p></li>
+<li><p><a class="reference external" href="http://overview-definitions.md">overview-definitions.md</a></p></li>
+</ul>
+</li>
+<li><p>Guide for Project Design</p>
+<ul>
+<li><p><a class="reference external" href="http://project-design.md">project-design.md</a></p></li>
+<li><p><a class="reference external" href="http://pd-overview.md">pd-overview.md</a></p></li>
+<li><p>pd-overview</p>
+<ul>
+<li><p>pd-overview-methods</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id12">
+<h3>4 <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code><a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<p>This gives an error on <code class="docutils literal notranslate"><span class="pre">Athena</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">Hades</span></code>, but not on <code class="docutils literal notranslate"><span class="pre">Poseidon</span></code></p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>cnd/book/website
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>jupyter-book<span class="w"> </span>build<span class="w"> </span>.
+</pre></div>
+</div>
+<p>And here’s the fix for <code class="docutils literal notranslate"><span class="pre">Athena</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">Poseidon</span></code></p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>uninstall<span class="w"> </span>sphinx<span class="w"> </span>sphinx-panels<span class="w"> </span>jupyter-book<span class="w"> </span>sphinxcontrib-applehelp<span class="w"> </span>sphinxcontrib-devhelp<span class="w"> </span>sphinxcontrib-jsmath<span class="w"> </span>sphinxcontrib-htmlhelp<span class="w"> </span>sphinxcontrib-serializinghtml<span class="w"> </span>sphinxcontrib-qthelp<span class="w"> </span>sphinx-design<span class="w"> </span>sphinx-external-toc<span class="w"> </span>pydata-sphinx-theme<span class="w"> </span>sphinx-jupyterbook-latex<span class="w"> </span>sphinx-book-theme<span class="w"> </span>myst-nb<span class="w"> </span>myst-parser
+pip<span class="w"> </span>install<span class="w"> </span><span class="s2">&quot;sphinx&gt;=5.0,&lt;6.0&quot;</span><span class="w"> </span>sphinxcontrib-applehelp<span class="w"> </span>sphinxcontrib-devhelp<span class="w"> </span>sphinxcontrib-jsmath<span class="w"> </span>sphinxcontrib-htmlhelp<span class="w"> </span>sphinxcontrib-serializinghtml<span class="w"> </span>sphinxcontrib-qthelp<span class="w"> </span>sphinx-design<span class="w"> </span><span class="s2">&quot;sphinx-external-toc&lt;2&quot;</span><span class="w"> </span><span class="s2">&quot;pydata-sphinx-theme&gt;=0.15.2&quot;</span><span class="w"> </span><span class="s2">&quot;sphinx-jupyterbook-latex&lt;2&quot;</span><span class="w"> </span><span class="s2">&quot;sphinx-book-theme&gt;=1.1.0,&lt;2&quot;</span><span class="w"> </span><span class="s2">&quot;myst-nb&lt;3&quot;</span><span class="w"> </span><span class="s2">&quot;myst-parser&lt;3&quot;</span><span class="w"> </span><span class="s2">&quot;jupyter-book&gt;=0.12.0&quot;</span><span class="w"> </span><span class="s2">&quot;sphinx-thebe&gt;=0.3,&lt;1&quot;</span><span class="w"> </span>sphinx-panels
+</pre></div>
+</div>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>jupyter-book<span class="w"> </span>build<span class="w"> </span>.
+</pre></div>
+</div>
+</section>
+<section id="rm">
+<h3>5 <code class="docutils literal notranslate"><span class="pre">rm</span></code><a class="headerlink" href="#rm" title="Link to this heading">#</a></h3>
+<p>Can skip this since step <code class="docutils literal notranslate"><span class="pre">#3</span></code> sanized the repo</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>rm<span class="w"> </span>-rf<span class="w"> </span>figures
+rm<span class="w"> </span>-rf<span class="w"> </span>_build/html/_images
+</pre></div>
+</div>
+</section>
+<section id="new-jbb-https-sh">
+<h3>6 <code class="docutils literal notranslate"><span class="pre">new/jbb_https.sh</span></code><a class="headerlink" href="#new-jbb-https-sh" title="Link to this heading">#</a></h3>
+<p>Prepare to <code class="docutils literal notranslate"><span class="pre">push</span></code> the <code class="docutils literal notranslate"><span class="pre">.git</span></code></p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/documents/athena
+new/jbb_https.sh
+</pre></div>
+</div>
+</section>
+<section id="id13">
+<h3>7 <code class="docutils literal notranslate"><span class="pre">ghp-import</span></code><a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/abikesa/everyday/
+mv<span class="w"> </span>cnd/book/website/_build<span class="w"> </span>everyday/book/website/_build
+</pre></div>
+</div>
+</section>
+</section>
+<section id="scp-ssh-id-rca">
+<h2>47 <code class="docutils literal notranslate"><span class="pre">scp</span> <span class="pre">~/.ssh/id_rca</span></code><a class="headerlink" href="#scp-ssh-id-rca" title="Link to this heading">#</a></h2>
+<p>Certainly! Here’s a summarized step-by-step guide for transferring your SSH private key from Poseidon (iMacPro) to Athena (Studio Pro) and ensuring everything is set up correctly:</p>
+<section id="summary-transfer-ssh-key-from-poseidon-to-athena">
+<h3>Summary: Transfer SSH Key from Poseidon to Athena<a class="headerlink" href="#summary-transfer-ssh-key-from-poseidon-to-athena" title="Link to this heading">#</a></h3>
+<ol class="arabic">
+<li><p><strong>Find the Username and Hostname/IP Address of Athena</strong></p>
+<ul>
+<li><p>On Athena, open Terminal and run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>whoami
+hostname
+hostname<span class="w"> </span>-I
+</pre></div>
+</div>
+</li>
+<li><p>Note the username, hostname, and IP address.</p></li>
+</ul>
+</li>
+<li><p><strong>Ensure SSH is Installed and Running on Athena</strong></p>
+<ul>
+<li><p>Check if SSH is installed:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>-V
+</pre></div>
+</div>
+</li>
+<li><p>Ensure SSH service is running:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>systemsetup<span class="w"> </span>-getremotelogin
+sudo<span class="w"> </span>systemsetup<span class="w"> </span>-setremotelogin<span class="w"> </span>on<span class="w">  </span><span class="c1"># If not already on</span>
+sudo<span class="w"> </span>launchctl<span class="w"> </span>load<span class="w"> </span>-w<span class="w"> </span>/System/Library/LaunchDaemons/ssh.plist<span class="w">  </span><span class="c1"># Start SSH service</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p><strong>Configure SSH Daemon on Athena</strong></p>
+<ul>
+<li><p>Edit the SSH configuration file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/ssh/sshd_config
+</pre></div>
+</div>
+</li>
+<li><p>Ensure the following lines are uncommented:</p>
+<div class="highlight-plaintext notranslate"><div class="highlight"><pre><span></span>Port 22
+AddressFamily any
+ListenAddress 0.0.0.0
+ListenAddress ::
+</pre></div>
+</div>
+</li>
+<li><p>Restart SSH service:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>launchctl<span class="w"> </span>unload<span class="w"> </span>/System/Library/LaunchDaemons/ssh.plist
+sudo<span class="w"> </span>launchctl<span class="w"> </span>load<span class="w"> </span>-w<span class="w"> </span>/System/Library/LaunchDaemons/ssh.plist
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p><strong>Check and Configure Firewall on Athena</strong></p>
+<ul>
+<li><p>Ensure firewall allows SSH:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>/usr/libexec/ApplicationFirewall/socketfilterfw<span class="w"> </span>--add<span class="w"> </span>/usr/sbin/sshd
+sudo<span class="w"> </span>/usr/libexec/ApplicationFirewall/socketfilterfw<span class="w"> </span>--unblockapp<span class="w"> </span>/usr/sbin/sshd
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p><strong>Transfer SSH Key from Poseidon to Athena</strong></p>
+<ul>
+<li><p>On Poseidon, use <code class="docutils literal notranslate"><span class="pre">scp</span></code> to copy the SSH key:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span>~/.ssh/id_rsa<span class="w"> </span>yourusername@athena.local:/home/yourusername/.ssh/
+</pre></div>
+</div>
+</li>
+<li><p>Or, if using IP address:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span>~/.ssh/id_rsa<span class="w"> </span>yourusername@192.168.1.100:/home/yourusername/.ssh/
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p><strong>Set Correct Permissions on Athena</strong></p>
+<ul>
+<li><p>SSH into Athena:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>yourusername@athena.local
+</pre></div>
+</div>
+</li>
+<li><p>Or, if using IP address:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>yourusername@192.168.1.100
+</pre></div>
+</div>
+</li>
+<li><p>Set the correct permissions for the SSH key:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>~/.ssh/id_rsa
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p><strong>Verify the Transfer</strong></p>
+<ul>
+<li><p>Navigate to the <code class="docutils literal notranslate"><span class="pre">.ssh</span></code> directory on Athena and list the files:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/.ssh
+ls<span class="w"> </span>-la
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="example-commands-summary">
+<h3>Example Commands Summary<a class="headerlink" href="#example-commands-summary" title="Link to this heading">#</a></h3>
+<ol class="arabic">
+<li><p><strong>Find username and hostname/IP address</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>whoami
+hostname
+hostname<span class="w"> </span>-I
+</pre></div>
+</div>
+</li>
+<li><p><strong>Ensure SSH is installed and running</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>-V
+sudo<span class="w"> </span>systemsetup<span class="w"> </span>-getremotelogin
+sudo<span class="w"> </span>systemsetup<span class="w"> </span>-setremotelogin<span class="w"> </span>on
+sudo<span class="w"> </span>launchctl<span class="w"> </span>load<span class="w"> </span>-w<span class="w"> </span>/System/Library/LaunchDaemons/ssh.plist
+</pre></div>
+</div>
+</li>
+<li><p><strong>Configure SSH daemon</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/ssh/sshd_config
+</pre></div>
+</div>
+<p>Uncomment:</p>
+<div class="highlight-plaintext notranslate"><div class="highlight"><pre><span></span>Port 22
+AddressFamily any
+ListenAddress 0.0.0.0
+ListenAddress ::
+</pre></div>
+</div>
+<p>Restart SSH service:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>launchctl<span class="w"> </span>unload<span class="w"> </span>/System/Library/LaunchDaemons/ssh.plist
+sudo<span class="w"> </span>launchctl<span class="w"> </span>load<span class="w"> </span>-w<span class="w"> </span>/System/Library/LaunchDaemons/ssh.plist
+</pre></div>
+</div>
+</li>
+<li><p><strong>Configure firewall</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>/usr/libexec/ApplicationFirewall/socketfilterfw<span class="w"> </span>--add<span class="w"> </span>/usr/sbin/sshd
+sudo<span class="w"> </span>/usr/libexec/ApplicationFirewall/socketfilterfw<span class="w"> </span>--unblockapp<span class="w"> </span>/usr/sbin/sshd
+</pre></div>
+</div>
+</li>
+<li><p><strong>Transfer SSH key using <code class="docutils literal notranslate"><span class="pre">scp</span></code></strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span>~/.ssh/id_rsa<span class="w"> </span>yourusername@athena.local:/home/yourusername/.ssh/
+</pre></div>
+</div>
+<p>Or, using IP address:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span>~/.ssh/id_rsa<span class="w"> </span>yourusername@192.168.1.100:/home/yourusername/.ssh/
+</pre></div>
+</div>
+</li>
+<li><p><strong>Set correct permissions</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>yourusername@athena.local
+</pre></div>
+</div>
+<p>Or, using IP address:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>yourusername@192.168.1.100
+</pre></div>
+</div>
+<p>Then set permissions:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>~/.ssh/id_rsa
+</pre></div>
+</div>
+</li>
+<li><p><strong>Verify the transfer</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>~/.ssh
+ls<span class="w"> </span>-la
+</pre></div>
+</div>
+</li>
+</ol>
+<p>By following these steps, you should have successfully transferred your SSH key from Poseidon to Athena and ensured the proper configuration and permissions.</p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -3157,7 +3595,7 @@ deactivate
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#work-abikesa-key-g-sh">9 <code class="docutils literal notranslate"><span class="pre">work/abikesa_key_g.sh</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#work-abikesa-key-sh">10 <code class="docutils literal notranslate"><span class="pre">work/abikesa_key.sh</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#work-abikesa-ngoma-sh">11 <code class="docutils literal notranslate"><span class="pre">work/abikesa_ngoma.sh</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#work-abikesa-remove-duplicages-sh">12 <code class="docutils literal notranslate"><span class="pre">work/abikesa_remove_duplicages.sh</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#new-rmstuff-https-sh">12 <code class="docutils literal notranslate"><span class="pre">new/rmstuff_https.sh</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#work-abikesa-rmdir-sh">13 <code class="docutils literal notranslate"><span class="pre">work/abikesa_rmdir.sh</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#work-abikesa-rmfiles-sh">14 <code class="docutils literal notranslate"><span class="pre">work/abikesa_rmfiles.sh</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#work-abikesa-rmstuff-sh">15 <code class="docutils literal notranslate"><span class="pre">work/abikesa_rmstuff.sh</span></code></a></li>
@@ -3288,6 +3726,33 @@ deactivate
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xquartz">40 <code class="docutils literal notranslate"><span class="pre">XQuartz</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-myenv-sh">41 <code class="docutils literal notranslate"><span class="pre">setup_myenv.sh</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#git-config-global-http-sslverify-false">42 <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">http.sslVerify</span> <span class="pre">false</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pip-install-sphinx-5-0-6-0">43 <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">"sphinx&gt;=5.0,&lt;6.0"</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requirements-txt">44 <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pip-install-r-requirements-txt-jupyter-book-build"><code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span> <span class="pre">requirements.txt</span> <span class="pre">&amp;&amp;</span> <span class="pre">jupyter-book</span> <span class="pre">build</span> <span class="pre">.</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#deploying">Deploying</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#on-netlify">On Netlify</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11"><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">credential-cache</span> <span class="pre">exit</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wiki-style-jb">45 <code class="docutils literal notranslate"><span class="pre">wiki-style</span> <span class="pre">jb</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#everyday">46 <code class="docutils literal notranslate"><span class="pre">everyday</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#myenv">1 <code class="docutils literal notranslate"><span class="pre">myenv</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clone-rm">2 <code class="docutils literal notranslate"><span class="pre">clone</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">rm</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#toc-yml">3 <code class="docutils literal notranslate"><span class="pre">_toc.yml</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">4 <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rm">5 <code class="docutils literal notranslate"><span class="pre">rm</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-jbb-https-sh">6 <code class="docutils literal notranslate"><span class="pre">new/jbb_https.sh</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">7 <code class="docutils literal notranslate"><span class="pre">ghp-import</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scp-ssh-id-rca">47 <code class="docutils literal notranslate"><span class="pre">scp</span> <span class="pre">~/.ssh/id_rca</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-transfer-ssh-key-from-poseidon-to-athena">Summary: Transfer SSH Key from Poseidon to Athena</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-commands-summary">Example Commands Summary</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
