@@ -1,10 +1,14 @@
-``
 #!/bin/bash
 
-# Prompt for inputs
-read -p "Enter the root directory name: " ROOT_DIR
-read -p "Enter the source directory path (relative to root): " SOURCE_DIR
-read -p "Enter the destination directory path (relative to root): " DEST_DIR
+# Prompt for inputs with defaults
+read -p "Enter the root directory name (default: jama): " ROOT_DIR
+ROOT_DIR=${ROOT_DIR:-jama}
+
+read -p "Enter the source directory path (relative to root, default: _build/html/webApp): " SOURCE_DIR
+SOURCE_DIR=${SOURCE_DIR:-_build/html/webApp}
+
+read -p "Enter the destination directory path (relative to root, default: webApp): " DEST_DIR
+DEST_DIR=${DEST_DIR:-webApp}
 
 # Construct full paths
 FULL_SOURCE_DIR="${ROOT_DIR}/${SOURCE_DIR}"
