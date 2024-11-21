@@ -5,50 +5,50 @@ chapters:
   # Sing O Muse!
   - file: act1/part1
     sections:
-      - title: Mortality
+      - title: Network
         file: act1/chapter1
-      - title: ESRD
+      - title: Layers
         file: act1/chapter2
-      - title: Frailty
+      - title: Vision
         file: act1/chapter3
         
   # Sing O Muse!
   - file: act2/part2
     sections:
-      - title: Hospitalization
+      - title: Histology
         file: act2/chapter1
-      - title: Length of Stay
+      - title: Ligands
         file: act2/chapter2
-      - title: Outcomes
+      - title: Pathways
         file: act2/chapter3
 
   # Apollo
   - file: act3/part3
     sections:
-      - title: WebApp
+      - title: Emotional
         file: act3/act1
         sections:
-          - title: Browser
+          - title: Biology (Embodiment)
             file: act3/part1/part1_1
-          - title: User
+          - title: Sociology (Tokenization)
             file: act3/part1/part1_2
-          - title: Annotation
+          - title: Psychology (Transformation)
             file: act3/part1/part1_3
-      - title: Deployment
+      - title: Archetypal
         file: act3/act2
         sections:
-          - title: GitHub
+          - title: Paradiso
             file: act3/part2/part2_1
-          - title: Collaborative
+          - title: Limbo
             file: act3/part2/part2_2
-          - title: Open-Source
+          - title: Inferno
             file: act3/part2/part2_3
-      - title: Iteration
+      - title: Relational
         file: act3/act3
         sections:
-          - title: Latest Research
+          - title: Persona
             file: act3/part3/part3_1
-          - title: Bayesian Updates
+          - title: Shadow
             file: act3/part3/part3_2
-          - title: Missingness and A Priori
-            file: act3/part3/part3_3
+
+  - file: act3/part3/part3_3
