@@ -507,6 +507,16 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-percentage-of-nodes-illuminated"><strong>Analysis: Percentage of Nodes Illuminated</strong></a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#impact-of-staring-into-an-eclipse">Impact of Staring into an Eclipse</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complete-code-for-eclipse-impact-path-visualization">Complete Code for Eclipse Impact Path Visualization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-eclipse-and-vision-loss">The Eclipse and Vision Loss</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-british-chemistry-corporation">The British Chemistry Corporation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#propanol-contamination">Propanol Contamination</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#political-chemistry">Political Chemistry</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -2022,6 +2032,298 @@ This is remarkable, as few works can engage both the dense rational nodes and em
 <p>Given the <strong>focus on sociological and environmental interactions</strong>, approximately <strong>25% of your network’s nodes</strong>—mainly in the sociological, behavioral, and system layers—are actively engaged by “Yes, Minister!” while the biological and quantum mechanics layers remain untouched. If you’d like, I can refine this mapping with a more detailed thematic breakdown of individual episodes against nodes.</p>
 </section>
 </section>
+<section id="impact-of-staring-into-an-eclipse">
+<h2>Impact of Staring into an Eclipse<a class="headerlink" href="#impact-of-staring-into-an-eclipse" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Define layers for the compression (input) phase with updated order for Systems</span>
+<span class="n">input_layers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Biology&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Ecology&#39;</span><span class="p">,</span> <span class="s1">&#39;Other Species&#39;</span><span class="p">,</span> <span class="s1">&#39;Humans&#39;</span><span class="p">,</span> <span class="s1">&#39;Environment&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Drugs and External Factors&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Drugs&#39;</span><span class="p">,</span> <span class="s1">&#39;Radiation&#39;</span><span class="p">,</span> <span class="s1">&#39;Toxins&#39;</span><span class="p">,</span> <span class="s1">&#39;Nutrients&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Ligands &amp; Receptors&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Hormones&#39;</span><span class="p">,</span> <span class="s1">&#39;Neurotransmitters&#39;</span><span class="p">,</span> <span class="s1">&#39;Growth Factors&#39;</span><span class="p">,</span> <span class="s1">&#39;Cytokines&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Pathways&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Signal Transduction&#39;</span><span class="p">,</span> <span class="s1">&#39;Metabolic&#39;</span><span class="p">,</span> <span class="s1">&#39;Epigenetic&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Cells&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Neurons&#39;</span><span class="p">,</span> <span class="s1">&#39;Epithelial&#39;</span><span class="p">,</span> <span class="s1">&#39;Immune Cells&#39;</span><span class="p">,</span> <span class="s1">&#39;Stem Cells&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Tissues&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Neural&#39;</span><span class="p">,</span> <span class="s1">&#39;Muscle&#39;</span><span class="p">,</span> <span class="s1">&#39;Connective&#39;</span><span class="p">,</span> <span class="s1">&#39;Epithelial&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Systems&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Immune&#39;</span><span class="p">,</span> <span class="s1">&#39;Nervous&#39;</span><span class="p">,</span> <span class="s1">&#39;Endocrine&#39;</span><span class="p">,</span> <span class="s1">&#39;Circulatory&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Immuno-Neuro-Endocrinology&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Cytokines&#39;</span><span class="p">,</span> <span class="s1">&#39;Neurohormones&#39;</span><span class="p">,</span> <span class="s1">&#39;Endocrine Feedback&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Molecular Biology&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;DNA&#39;</span><span class="p">,</span> <span class="s1">&#39;RNA&#39;</span><span class="p">,</span> <span class="s1">&#39;Proteins&#39;</span><span class="p">,</span> <span class="s1">&#39;Lipids&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Omics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Genomics&#39;</span><span class="p">,</span> <span class="s1">&#39;Proteomics&#39;</span><span class="p">,</span> <span class="s1">&#39;Metabolomics&#39;</span><span class="p">,</span> <span class="s1">&#39;Epigenomics&#39;</span><span class="p">,</span> <span class="s1">&#39;Transcriptomics&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Quantum&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Energy&#39;</span><span class="p">,</span> <span class="s1">&#39;Particles&#39;</span><span class="p">,</span> <span class="s1">&#39;Spin&#39;</span><span class="p">,</span> <span class="s1">&#39;Wave Functions&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># Define layers for the decompression (output) phase</span>
+<span class="n">output_layers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Molecular Outputs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Electron Transfer&#39;</span><span class="p">,</span> <span class="s1">&#39;Molecular Stability&#39;</span><span class="p">,</span> <span class="s1">&#39;Reaction Dynamics&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Cellular Behavior&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;ATP Production&#39;</span><span class="p">,</span> <span class="s1">&#39;Membrane Potential&#39;</span><span class="p">,</span> <span class="s1">&#39;DNA Repair&#39;</span><span class="p">,</span> <span class="s1">&#39;Protein Synthesis&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Tissue-Level Dynamics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Neural Activity&#39;</span><span class="p">,</span> <span class="s1">&#39;Muscle Contraction&#39;</span><span class="p">,</span> <span class="s1">&#39;Immune Responses&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Organ Systems&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Cardiovascular&#39;</span><span class="p">,</span> <span class="s1">&#39;Immune&#39;</span><span class="p">,</span> <span class="s1">&#39;Nervous&#39;</span><span class="p">,</span> <span class="s1">&#39;Endocrine&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Physiological States&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Homeostasis&#39;</span><span class="p">,</span> <span class="s1">&#39;Stress Response&#39;</span><span class="p">,</span> <span class="s1">&#39;Energy Balance&#39;</span><span class="p">,</span> <span class="s1">&#39;Neuroendocrine Feedback&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Behavioral and Psychological Outcomes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Cognitive Function&#39;</span><span class="p">,</span> <span class="s1">&#39;Emotional States&#39;</span><span class="p">,</span> <span class="s1">&#39;Behavioral Outputs&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Sociological and Environmental Interactions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Social Structures&#39;</span><span class="p">,</span> <span class="s1">&#39;Environmental Interactions&#39;</span><span class="p">,</span> <span class="s1">&#39;Sociological Outputs&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Functional Health Outcomes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Longevity&#39;</span><span class="p">,</span> <span class="s1">&#39;Disease Risk&#39;</span><span class="p">,</span> <span class="s1">&#39;Quality of Life&#39;</span><span class="p">,</span> <span class="s1">&#39;Functional Fitness&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># Merge the input and output layers to create a full network hierarchy</span>
+<span class="n">full_layers</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="n">input_layers</span><span class="p">,</span> <span class="o">**</span><span class="n">output_layers</span><span class="p">}</span>
+
+<span class="c1"># Initialize the graph</span>
+<span class="n">G_full_biology</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+
+<span class="c1"># Add nodes for each layer</span>
+<span class="k">for</span> <span class="n">layer_name</span><span class="p">,</span> <span class="n">nodes</span> <span class="ow">in</span> <span class="n">full_layers</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">G_full_biology</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">layer</span><span class="o">=</span><span class="n">layer_name</span><span class="p">)</span>
+
+<span class="c1"># Connect layers sequentially for symmetry</span>
+<span class="n">full_layer_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">full_layers</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">full_layer_names</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">source_layer</span> <span class="o">=</span> <span class="n">full_layers</span><span class="p">[</span><span class="n">full_layer_names</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+    <span class="n">target_layer</span> <span class="o">=</span> <span class="n">full_layers</span><span class="p">[</span><span class="n">full_layer_names</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]]</span>
+    <span class="k">for</span> <span class="n">source_node</span> <span class="ow">in</span> <span class="n">source_layer</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">target_node</span> <span class="ow">in</span> <span class="n">target_layer</span><span class="p">:</span>
+            <span class="n">G_full_biology</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">source_node</span><span class="p">,</span> <span class="n">target_node</span><span class="p">)</span>
+
+<span class="c1"># Define node positions for symmetric visualization</span>
+<span class="n">pos_full_biology</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">layer_spacing</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">node_spacing</span> <span class="o">=</span> <span class="mf">1.5</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">layer_name</span><span class="p">,</span> <span class="n">nodes</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">full_layers</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="n">i</span> <span class="o">*</span> <span class="n">layer_spacing</span> <span class="o">+</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">full_layer_names</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">layer_spacing</span> <span class="o">/</span> <span class="mi">2</span>  <span class="c1"># Center the graph vertically</span>
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nodes</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">j</span> <span class="o">*</span> <span class="n">node_spacing</span> <span class="o">-</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">node_spacing</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="n">pos_full_biology</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># Define custom colors for specific nodes</span>
+<span class="n">custom_colors</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Electron Transfer&quot;</span><span class="p">:</span> <span class="s2">&quot;lightsalmon&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Molecular Stability&quot;</span><span class="p">:</span> <span class="s2">&quot;paleturquoise&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Reaction Dynamics&quot;</span><span class="p">:</span> <span class="s2">&quot;lightgreen&quot;</span>
+<span class="p">}</span>
+
+<span class="c1"># Assign colors to nodes, default to a color map</span>
+<span class="n">node_colors</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">G_full_biology</span><span class="o">.</span><span class="n">nodes</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">custom_colors</span><span class="p">:</span>
+        <span class="n">node_colors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">custom_colors</span><span class="p">[</span><span class="n">node</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">node_colors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;lightgray&quot;</span><span class="p">)</span>  <span class="c1"># Default color</span>
+
+<span class="c1"># Highlight the Eclipse Impact Path</span>
+<span class="n">eclipse_path</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;Environment&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Radiation&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Signal Transduction&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Neurons&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Neural Activity&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Stress Response&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Behavioral Outputs&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Environmental Interactions&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Functional Fitness&quot;</span>
+<span class="p">]</span>
+
+<span class="c1"># Update the graph to reflect the extended path</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">eclipse_path</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">G_full_biology</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">eclipse_path</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">eclipse_path</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">weight</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># Adjust edge widths for visualization</span>
+<span class="n">edge_widths</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">G_full_biology</span><span class="o">.</span><span class="n">edges</span><span class="p">():</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">eclipse_path</span><span class="p">,</span> <span class="n">eclipse_path</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
+        <span class="n">edge_widths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># Highlighted path</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">edge_widths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>  <span class="c1"># Default edge width</span>
+
+<span class="c1"># Draw the graph with the extended path emphasized</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+
+<span class="c1"># Draw nodes and labels</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_nodes</span><span class="p">(</span><span class="n">G_full_biology</span><span class="p">,</span> <span class="n">pos_full_biology</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="n">node_colors</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_labels</span><span class="p">(</span><span class="n">G_full_biology</span><span class="p">,</span> <span class="n">pos_full_biology</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">font_weight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">)</span>
+
+<span class="c1"># Draw edges with varying thickness</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">G_full_biology</span><span class="p">,</span> <span class="n">pos_full_biology</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">edge_widths</span><span class="p">,</span> <span class="n">edge_color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+
+<span class="c1"># Add a title and clean up axes</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Neural Network with Extended Eclipse Impact Path&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/8fec03ed74610b320520ca12934ce0ca2e565cdc0a5f9e5afd9a8b36ad65b998.png" src="../_images/8fec03ed74610b320520ca12934ce0ca2e565cdc0a5f9e5afd9a8b36ad65b998.png" />
+</div>
+</div>
+<section id="complete-code-for-eclipse-impact-path-visualization">
+<h3>Complete Code for Eclipse Impact Path Visualization<a class="headerlink" href="#complete-code-for-eclipse-impact-path-visualization" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="the-eclipse-and-vision-loss">
+<h3>The Eclipse and Vision Loss<a class="headerlink" href="#the-eclipse-and-vision-loss" title="Permalink to this heading">#</a></h3>
+<p>The “Eclipse and Vision Loss” pathway is a cascade of interconnected events, each representing a stage in the biological response to a catastrophic error: staring directly at an eclipse. It begins in the environment, where radiation exposure occurs, and progresses through intricate biological systems, culminating in a sociological and physiological impact.</p>
+<p>This journey through the network mirrors a descent into biological chaos: from external radiation, triggering signal transduction pathways, leading to neural cellular damage, cascading into stress responses, and finally manifesting as behavioral and environmental outcomes. The network not only highlights the tragedy but also serves as a reminder of the fragility and interdependence of our systems.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="the-british-chemistry-corporation">
+<h2>The British Chemistry Corporation<a class="headerlink" href="#the-british-chemistry-corporation" title="Permalink to this heading">#</a></h2>
+<section id="propanol-contamination">
+<h3>Propanol Contamination<a class="headerlink" href="#propanol-contamination" title="Permalink to this heading">#</a></h3>
+<p>The second graph will model the topics in <em>Yes, Minister</em>, Season 2, Episode 4. The key themes include:</p>
+<ul class="simple">
+<li><p><strong>British Chemistry Corporation’s scandal</strong> involving propanol contamination.</p></li>
+<li><p><strong>Toxins in a constituency</strong>, sparking debates on government intervention, scientific responsibility, and public trust.</p></li>
+<li><p><strong>Ministerial decision-making</strong>, influenced by political pressures and the balancing of economic, scientific, and ethical considerations.</p></li>
+</ul>
+<p>Let me first create a graph to capture this scenario.</p>
+<p>Here is the graph depicting the “Propanol Contamination and Political Chemistry” network. It illustrates the flow from the British Chemistry Corporation’s scandal through environmental and public health risks, government responses, and the resulting societal and economic impacts.</p>
+</section>
+<hr class="docutils" />
+<section id="political-chemistry">
+<h3>Political Chemistry<a class="headerlink" href="#political-chemistry" title="Permalink to this heading">#</a></h3>
+<p>The intersection of science, industry, and politics creates a volatile network, as seen in the British Chemistry Corporation’s scandal. At its core lies the propanol contamination, which leaks into a constituency, igniting public health concerns. The toxins serve as a metaphor for how corporate missteps infiltrate not just the environment but also the trust between government and citizens.</p>
+<p>The government’s response—ministerial oversight and scientific analysis—attempts to bridge economic interests with ethical responsibility. However, the tension between policy formation and political expediency creates an adversarial equilibrium where economic fallout clashes with the need to rebuild constituency trust.</p>
+<p>This graph is a snapshot of complexity, echoing the themes of <em>Yes, Minister</em>. It captures the intricate dance of decisions, where every move ripples outward, impacting both the immediate crisis and the broader political narrative.</p>
+<hr class="docutils" />
+<p>Would you like additional details, analyses, or further expansion of these chapters?</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Define layers for the compression (input) phase with updated order for Systems</span>
+<span class="n">input_layers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Biology&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Ecology&#39;</span><span class="p">,</span> <span class="s1">&#39;Other Species&#39;</span><span class="p">,</span> <span class="s1">&#39;Humans&#39;</span><span class="p">,</span> <span class="s1">&#39;Environment&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Drugs and External Factors&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Drugs&#39;</span><span class="p">,</span> <span class="s1">&#39;Radiation&#39;</span><span class="p">,</span> <span class="s1">&#39;Toxins&#39;</span><span class="p">,</span> <span class="s1">&#39;Nutrients&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Ligands &amp; Receptors&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Hormones&#39;</span><span class="p">,</span> <span class="s1">&#39;Neurotransmitters&#39;</span><span class="p">,</span> <span class="s1">&#39;Growth Factors&#39;</span><span class="p">,</span> <span class="s1">&#39;Cytokines&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Pathways&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Signal Transduction&#39;</span><span class="p">,</span> <span class="s1">&#39;Metabolic&#39;</span><span class="p">,</span> <span class="s1">&#39;Epigenetic&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Cells&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Neurons&#39;</span><span class="p">,</span> <span class="s1">&#39;Epithelial&#39;</span><span class="p">,</span> <span class="s1">&#39;Immune Cells&#39;</span><span class="p">,</span> <span class="s1">&#39;Stem Cells&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Tissues&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Neural&#39;</span><span class="p">,</span> <span class="s1">&#39;Muscle&#39;</span><span class="p">,</span> <span class="s1">&#39;Connective&#39;</span><span class="p">,</span> <span class="s1">&#39;Epithelial&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Systems&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Immune&#39;</span><span class="p">,</span> <span class="s1">&#39;Nervous&#39;</span><span class="p">,</span> <span class="s1">&#39;Endocrine&#39;</span><span class="p">,</span> <span class="s1">&#39;Circulatory&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Immuno-Neuro-Endocrinology&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Cytokines&#39;</span><span class="p">,</span> <span class="s1">&#39;Neurohormones&#39;</span><span class="p">,</span> <span class="s1">&#39;Endocrine Feedback&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Molecular Biology&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;DNA&#39;</span><span class="p">,</span> <span class="s1">&#39;RNA&#39;</span><span class="p">,</span> <span class="s1">&#39;Proteins&#39;</span><span class="p">,</span> <span class="s1">&#39;Lipids&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Omics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Genomics&#39;</span><span class="p">,</span> <span class="s1">&#39;Proteomics&#39;</span><span class="p">,</span> <span class="s1">&#39;Metabolomics&#39;</span><span class="p">,</span> <span class="s1">&#39;Epigenomics&#39;</span><span class="p">,</span> <span class="s1">&#39;Transcriptomics&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Quantum&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Energy&#39;</span><span class="p">,</span> <span class="s1">&#39;Particles&#39;</span><span class="p">,</span> <span class="s1">&#39;Spin&#39;</span><span class="p">,</span> <span class="s1">&#39;Wave Functions&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># Define layers for the decompression (output) phase</span>
+<span class="n">output_layers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Molecular Outputs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Electron Transfer&#39;</span><span class="p">,</span> <span class="s1">&#39;Molecular Stability&#39;</span><span class="p">,</span> <span class="s1">&#39;Reaction Dynamics&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Cellular Behavior&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;ATP Production&#39;</span><span class="p">,</span> <span class="s1">&#39;Membrane Potential&#39;</span><span class="p">,</span> <span class="s1">&#39;DNA Repair&#39;</span><span class="p">,</span> <span class="s1">&#39;Protein Synthesis&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Tissue-Level Dynamics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Neural Activity&#39;</span><span class="p">,</span> <span class="s1">&#39;Muscle Contraction&#39;</span><span class="p">,</span> <span class="s1">&#39;Immune Responses&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Organ Systems&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Cardiovascular&#39;</span><span class="p">,</span> <span class="s1">&#39;Immune&#39;</span><span class="p">,</span> <span class="s1">&#39;Nervous&#39;</span><span class="p">,</span> <span class="s1">&#39;Endocrine&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Physiological States&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Homeostasis&#39;</span><span class="p">,</span> <span class="s1">&#39;Stress Response&#39;</span><span class="p">,</span> <span class="s1">&#39;Energy Balance&#39;</span><span class="p">,</span> <span class="s1">&#39;Neuroendocrine Feedback&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Behavioral and Psychological Outcomes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Cognitive Function&#39;</span><span class="p">,</span> <span class="s1">&#39;Emotional States&#39;</span><span class="p">,</span> <span class="s1">&#39;Behavioral Outputs&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Sociological and Environmental Interactions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Social Structures&#39;</span><span class="p">,</span> <span class="s1">&#39;Environmental Interactions&#39;</span><span class="p">,</span> <span class="s1">&#39;Sociological Outputs&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Functional Health Outcomes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Longevity&#39;</span><span class="p">,</span> <span class="s1">&#39;Disease Risk&#39;</span><span class="p">,</span> <span class="s1">&#39;Quality of Life&#39;</span><span class="p">,</span> <span class="s1">&#39;Functional Fitness&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># Merge the input and output layers to create a full network hierarchy</span>
+<span class="n">full_layers</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="n">input_layers</span><span class="p">,</span> <span class="o">**</span><span class="n">output_layers</span><span class="p">}</span>
+
+<span class="c1"># Initialize the graph</span>
+<span class="n">G_full_biology</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+
+<span class="c1"># Add nodes for each layer</span>
+<span class="k">for</span> <span class="n">layer_name</span><span class="p">,</span> <span class="n">nodes</span> <span class="ow">in</span> <span class="n">full_layers</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">G_full_biology</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">layer</span><span class="o">=</span><span class="n">layer_name</span><span class="p">)</span>
+
+<span class="c1"># Connect layers sequentially for symmetry</span>
+<span class="n">full_layer_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">full_layers</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">full_layer_names</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">source_layer</span> <span class="o">=</span> <span class="n">full_layers</span><span class="p">[</span><span class="n">full_layer_names</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+    <span class="n">target_layer</span> <span class="o">=</span> <span class="n">full_layers</span><span class="p">[</span><span class="n">full_layer_names</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]]</span>
+    <span class="k">for</span> <span class="n">source_node</span> <span class="ow">in</span> <span class="n">source_layer</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">target_node</span> <span class="ow">in</span> <span class="n">target_layer</span><span class="p">:</span>
+            <span class="n">G_full_biology</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">source_node</span><span class="p">,</span> <span class="n">target_node</span><span class="p">)</span>
+
+<span class="c1"># Define node positions for symmetric visualization</span>
+<span class="n">pos_full_biology</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">layer_spacing</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">node_spacing</span> <span class="o">=</span> <span class="mf">1.5</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">layer_name</span><span class="p">,</span> <span class="n">nodes</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">full_layers</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="n">i</span> <span class="o">*</span> <span class="n">layer_spacing</span> <span class="o">+</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">full_layer_names</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">layer_spacing</span> <span class="o">/</span> <span class="mi">2</span>  <span class="c1"># Center the graph vertically</span>
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nodes</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">j</span> <span class="o">*</span> <span class="n">node_spacing</span> <span class="o">-</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">node_spacing</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="n">pos_full_biology</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># Define custom colors for specific nodes</span>
+<span class="n">custom_colors</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Propanol Contamination&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Public Trust&quot;</span><span class="p">:</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Political Fallout&quot;</span><span class="p">:</span> <span class="s2">&quot;purple&quot;</span>
+<span class="p">}</span>
+
+<span class="c1"># Assign colors to nodes, default to gray</span>
+<span class="n">node_colors</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">G_full_biology</span><span class="o">.</span><span class="n">nodes</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">custom_colors</span><span class="p">:</span>
+        <span class="n">node_colors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">custom_colors</span><span class="p">[</span><span class="n">node</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">node_colors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;lightgray&quot;</span><span class="p">)</span>  <span class="c1"># Default color</span>
+
+<span class="c1"># Highlight the Political Chemistry Path</span>
+<span class="n">political_chemistry_path</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;Environment&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Toxins&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Signal Transduction&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Neurons&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Immune Responses&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Stress Response&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Environmental Interactions&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Disease Risk&quot;</span>
+<span class="p">]</span>
+
+<span class="c1"># Update the graph to reflect the extended path</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">political_chemistry_path</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">G_full_biology</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">political_chemistry_path</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">political_chemistry_path</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">weight</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># Adjust edge widths for visualization</span>
+<span class="n">edge_widths</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">G_full_biology</span><span class="o">.</span><span class="n">edges</span><span class="p">():</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">political_chemistry_path</span><span class="p">,</span> <span class="n">political_chemistry_path</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
+        <span class="n">edge_widths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># Highlighted path</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">edge_widths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>  <span class="c1"># Default edge width</span>
+
+<span class="c1"># Draw the graph with the extended path emphasized</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+
+<span class="c1"># Draw nodes and labels</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_nodes</span><span class="p">(</span><span class="n">G_full_biology</span><span class="p">,</span> <span class="n">pos_full_biology</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="n">node_colors</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_labels</span><span class="p">(</span><span class="n">G_full_biology</span><span class="p">,</span> <span class="n">pos_full_biology</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">font_weight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">)</span>
+
+<span class="c1"># Draw edges with varying thickness</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">G_full_biology</span><span class="p">,</span> <span class="n">pos_full_biology</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">edge_widths</span><span class="p">,</span> <span class="n">edge_color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+
+<span class="c1"># Add a title and clean up axes</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Neural Network with Political Chemistry Path Highlighted&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/c78f13fed53d2651a3eee701cf3e8065f919c4feb60024ff15feb1bbb55dbb75.png" src="../_images/c78f13fed53d2651a3eee701cf3e8065f919c4feb60024ff15feb1bbb55dbb75.png" />
+</div>
+</div>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -2201,6 +2503,16 @@ This is remarkable, as few works can engage both the dense rational nodes and em
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-yes-minister-to-your-network"><strong>Connecting “Yes, Minister!” to Your Network</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-percentage-of-nodes-illuminated"><strong>Analysis: Percentage of Nodes Illuminated</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#impact-of-staring-into-an-eclipse">Impact of Staring into an Eclipse</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#complete-code-for-eclipse-impact-path-visualization">Complete Code for Eclipse Impact Path Visualization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-eclipse-and-vision-loss">The Eclipse and Vision Loss</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-british-chemistry-corporation">The British Chemistry Corporation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#propanol-contamination">Propanol Contamination</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#political-chemistry">Political Chemistry</a></li>
 </ul>
 </li>
 </ul>
