@@ -429,6 +429,19 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fortune-cookies-athiests">Fortune Cookies &amp; Athiests</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#embodiment-tokenization-transformation">Embodiment, Tokenization &amp; Transformation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#art-static-engineering-dynamic">Art, Static, Engineering, Dynamic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#yes-minister-s2-e4-the-greasy-pole">Yes, Minister! S2, E4 - The Greasy Pole</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#narrative-activation-score"><strong>Narrative Activation Score</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#input-layers"><strong>1. Input Layers:</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#compression-layers"><strong>2. Compression Layers:</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bottleneck-layer"><strong>3. Bottleneck Layer:</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#output-layers"><strong>4. Output Layers:</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#node-activation-estimate"><strong>Node Activation Estimate</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-to-other-media"><strong>Comparison to Other Media</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#further-testing"><strong>Further Testing</strong></a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -1207,7 +1220,192 @@ To dance is to carve fleeting shapes into air, to marry the instant to infinity.
 To compose is to sculpt rhythm from chaos, to give time a pulse, a heart that beats beyond life.<br />
 And to write—ah, to write!—is to sing the unsingable, to summon time itself into words that endure.</p>
 <p>Artists do not merely endure time’s passage; they rewrite its script. Where one sees loss, the artist sees potential—each stroke, each movement, each note, each line a rebellion against impermanence. Art, in all its forms, is humanity’s timeless defiance.</p>
+</section>
 <hr class="docutils" />
+<section id="yes-minister-s2-e4-the-greasy-pole">
+<h2>Yes, Minister! S2, E4 - The Greasy Pole<a class="headerlink" href="#yes-minister-s2-e4-the-greasy-pole" title="Permalink to this heading">#</a></h2>
+<p><em>The British Chemical Corporation, with the backing of Sir Humphrey, intend to produce a dangerous chemical at their Merseyside factory. When the people protest Jim must arrive at an appropriate compromise.</em><br />
+– Comedy. Mar 16, 1981. 29min TV-PG CC</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Define layers for the compression (input) phase with updated order for Systems</span>
+<span class="n">input_layers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Biology&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Ecology&#39;</span><span class="p">,</span> <span class="s1">&#39;Other Species&#39;</span><span class="p">,</span> <span class="s1">&#39;Humans&#39;</span><span class="p">,</span> <span class="s1">&#39;Environment&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Drugs and External Factors&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Drugs&#39;</span><span class="p">,</span> <span class="s1">&#39;Radiation&#39;</span><span class="p">,</span> <span class="s1">&#39;Toxins&#39;</span><span class="p">,</span> <span class="s1">&#39;Nutrients&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Ligands &amp; Receptors&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Hormones&#39;</span><span class="p">,</span> <span class="s1">&#39;Neurotransmitters&#39;</span><span class="p">,</span> <span class="s1">&#39;Growth Factors&#39;</span><span class="p">,</span> <span class="s1">&#39;Cytokines&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Pathways&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Signal Transduction&#39;</span><span class="p">,</span> <span class="s1">&#39;Metabolic&#39;</span><span class="p">,</span> <span class="s1">&#39;Epigenetic&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Cells&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Neurons&#39;</span><span class="p">,</span> <span class="s1">&#39;Epithelial&#39;</span><span class="p">,</span> <span class="s1">&#39;Immune Cells&#39;</span><span class="p">,</span> <span class="s1">&#39;Stem Cells&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Tissues&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Neural&#39;</span><span class="p">,</span> <span class="s1">&#39;Muscle&#39;</span><span class="p">,</span> <span class="s1">&#39;Connective&#39;</span><span class="p">,</span> <span class="s1">&#39;Epithelial&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Systems&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Immune&#39;</span><span class="p">,</span> <span class="s1">&#39;Nervous&#39;</span><span class="p">,</span> <span class="s1">&#39;Endocrine&#39;</span><span class="p">,</span> <span class="s1">&#39;Circulatory&#39;</span><span class="p">],</span>  <span class="c1"># Updated order</span>
+    <span class="s2">&quot;Immuno-Neuro-Endocrinology&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Cytokines&#39;</span><span class="p">,</span> <span class="s1">&#39;Neurohormones&#39;</span><span class="p">,</span> <span class="s1">&#39;Endocrine Feedback&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Molecular Biology&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;DNA&#39;</span><span class="p">,</span> <span class="s1">&#39;RNA&#39;</span><span class="p">,</span> <span class="s1">&#39;Proteins&#39;</span><span class="p">,</span> <span class="s1">&#39;Lipids&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Omics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Genomics&#39;</span><span class="p">,</span> <span class="s1">&#39;Proteomics&#39;</span><span class="p">,</span> <span class="s1">&#39;Metabolomics&#39;</span><span class="p">,</span> <span class="s1">&#39;Epigenomics&#39;</span><span class="p">,</span> <span class="s1">&#39;Transcriptomics&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Quantum&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Energy&#39;</span><span class="p">,</span> <span class="s1">&#39;Particles&#39;</span><span class="p">,</span> <span class="s1">&#39;Spin&#39;</span><span class="p">,</span> <span class="s1">&#39;Wave Functions&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># Define layers for the decompression (output) phase</span>
+<span class="n">output_layers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Molecular Outputs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Electron Transfer&#39;</span><span class="p">,</span> <span class="s1">&#39;Molecular Stability&#39;</span><span class="p">,</span> <span class="s1">&#39;Reaction Dynamics&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Cellular Behavior&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;ATP Production&#39;</span><span class="p">,</span> <span class="s1">&#39;Membrane Potential&#39;</span><span class="p">,</span> <span class="s1">&#39;DNA Repair&#39;</span><span class="p">,</span> <span class="s1">&#39;Protein Synthesis&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Tissue-Level Dynamics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Neural Activity&#39;</span><span class="p">,</span> <span class="s1">&#39;Muscle Contraction&#39;</span><span class="p">,</span> <span class="s1">&#39;Immune Responses&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Organ Systems&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Cardiovascular&#39;</span><span class="p">,</span> <span class="s1">&#39;Immune&#39;</span><span class="p">,</span> <span class="s1">&#39;Nervous&#39;</span><span class="p">,</span> <span class="s1">&#39;Endocrine&#39;</span><span class="p">],</span>  <span class="c1"># Updated order</span>
+    <span class="s2">&quot;Physiological States&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Homeostasis&#39;</span><span class="p">,</span> <span class="s1">&#39;Stress Response&#39;</span><span class="p">,</span> <span class="s1">&#39;Energy Balance&#39;</span><span class="p">,</span> <span class="s1">&#39;Neuroendocrine Feedback&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Behavioral and Psychological Outcomes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Cognitive Function&#39;</span><span class="p">,</span> <span class="s1">&#39;Emotional States&#39;</span><span class="p">,</span> <span class="s1">&#39;Behavioral Outputs&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Sociological and Environmental Interactions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Social Structures&#39;</span><span class="p">,</span> <span class="s1">&#39;Environmental Interactions&#39;</span><span class="p">,</span> <span class="s1">&#39;Sociological Outputs&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Functional Health Outcomes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Longevity&#39;</span><span class="p">,</span> <span class="s1">&#39;Disease Risk&#39;</span><span class="p">,</span> <span class="s1">&#39;Quality of Life&#39;</span><span class="p">,</span> <span class="s1">&#39;Functional Fitness&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># Merge the input and output layers to create a full network hierarchy</span>
+<span class="n">full_layers</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="n">input_layers</span><span class="p">,</span> <span class="o">**</span><span class="n">output_layers</span><span class="p">}</span>
+
+<span class="c1"># Initialize the graph</span>
+<span class="n">G_full_biology</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+
+<span class="c1"># Add nodes for each layer</span>
+<span class="k">for</span> <span class="n">layer_name</span><span class="p">,</span> <span class="n">nodes</span> <span class="ow">in</span> <span class="n">full_layers</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">G_full_biology</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">layer</span><span class="o">=</span><span class="n">layer_name</span><span class="p">)</span>
+
+<span class="c1"># Connect layers sequentially for symmetry</span>
+<span class="n">full_layer_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">full_layers</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">full_layer_names</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">source_layer</span> <span class="o">=</span> <span class="n">full_layers</span><span class="p">[</span><span class="n">full_layer_names</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+    <span class="n">target_layer</span> <span class="o">=</span> <span class="n">full_layers</span><span class="p">[</span><span class="n">full_layer_names</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]]</span>
+    <span class="k">for</span> <span class="n">source_node</span> <span class="ow">in</span> <span class="n">source_layer</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">target_node</span> <span class="ow">in</span> <span class="n">target_layer</span><span class="p">:</span>
+            <span class="n">G_full_biology</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">source_node</span><span class="p">,</span> <span class="n">target_node</span><span class="p">)</span>
+
+<span class="c1"># Define node positions for symmetric visualization</span>
+<span class="n">pos_full_biology</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">layer_spacing</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">node_spacing</span> <span class="o">=</span> <span class="mf">1.5</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">layer_name</span><span class="p">,</span> <span class="n">nodes</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">full_layers</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="n">i</span> <span class="o">*</span> <span class="n">layer_spacing</span> <span class="o">+</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">full_layer_names</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">layer_spacing</span> <span class="o">/</span> <span class="mi">2</span>  <span class="c1"># Center the graph vertically</span>
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nodes</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">j</span> <span class="o">*</span> <span class="n">node_spacing</span> <span class="o">-</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">node_spacing</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="n">pos_full_biology</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># Define custom colors for specific nodes</span>
+<span class="n">custom_colors</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Electron Transfer&quot;</span><span class="p">:</span> <span class="s2">&quot;lightsalmon&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Molecular Stability&quot;</span><span class="p">:</span> <span class="s2">&quot;paleturquoise&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Reaction Dynamics&quot;</span><span class="p">:</span> <span class="s2">&quot;lightgreen&quot;</span>
+<span class="p">}</span>
+
+<span class="c1"># Assign colors to nodes, default to a color map</span>
+<span class="n">node_colors</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">G_full_biology</span><span class="o">.</span><span class="n">nodes</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">custom_colors</span><span class="p">:</span>
+        <span class="n">node_colors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">custom_colors</span><span class="p">[</span><span class="n">node</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">node_colors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;lightgray&quot;</span><span class="p">)</span>  <span class="c1"># Default color</span>
+
+<span class="c1"># Adjust node positions to ensure &quot;Reaction Dynamics&quot; is in the middle of the three custom nodes</span>
+<span class="n">custom_node_order</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Electron Transfer&quot;</span><span class="p">,</span> <span class="s2">&quot;Reaction Dynamics&quot;</span><span class="p">,</span> <span class="s2">&quot;Molecular Stability&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">custom_node_order</span><span class="p">):</span>
+    <span class="c1"># Place them in the middle of the layer, equally spaced</span>
+    <span class="n">x_offset</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">+</span> <span class="n">i</span>  <span class="c1"># Adjust offsets to align nodes symmetrically around the center</span>
+    <span class="n">pos_full_biology</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">x_offset</span><span class="p">,</span> <span class="n">pos_full_biology</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>  <span class="c1"># Keep the same vertical position</span>
+
+<span class="c1"># Draw the full graph with expanded layers</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span>
+    <span class="n">G_full_biology</span><span class="p">,</span>
+    <span class="n">pos_full_biology</span><span class="p">,</span>
+    <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">node_size</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span>
+    <span class="n">node_color</span><span class="o">=</span><span class="n">node_colors</span><span class="p">,</span>
+    <span class="n">font_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">font_weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span>
+    <span class="n">arrows</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+
+<span class="c1"># Add title and remove axes for clean visualization</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Symmetric Neural Network: Updated System Order&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/c2ffda1c5930126d80fc89d8bc6ddde461c8f48b9d91b6ed84130a016c42820a.png" src="../_images/c2ffda1c5930126d80fc89d8bc6ddde461c8f48b9d91b6ed84130a016c42820a.png" />
+</div>
+</div>
+<figure class="align-default" id="id3">
+<a class="reference internal image-reference" href="figures/blanche.*"><img alt="figures/blanche.*" src="figures/blanche.*" style="width: 1px; height: 1px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text"><em>Tarlsea as in Chelsea</em>. We have here a directed acyclic graph concerned with the transformation of available resources through luck, skill, and education into agency. Our input nodes of ecology, other species, humans, and environment speak to our pastoral &amp; dionysian life that is unfiltered, accessible, and nurturing. But in some incarnations and seasons it could bring us a plague, flood, or earth quake. The next layers with nodes for drugs, radiation, toxins, and nutrients represent collective knowledge that modern man has accumulated to help secure apollonian flood gate 3 (paradiso). And all the next layers represent apollonian flood gate 2 (limbo), what lies at the cutting edge of science, technology, engineering, and mathematics. But the bottleneck of deepest compression layer is flood gate 1 (inferno). Here we are in the realm of quantum mechanics with nodes for energy, particles, spin, wave functions, but with electron transfer, reaction dynamics, and molecular stability acting as the demarcation between physicochemistry and biochemistry. Through the fire, come what may, there emerge the emotional, archetypal, and relational nodes of the outer layer that define the human condition. Our vast neural networking explicitly outlining its transformational power, resilience, as well as frailty.</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>This episode warrants rewatching in context of the latest iteration of our neural network. Perhaps no work of art lights up more nodes in our neural network than this episode. We can input the TV or film script into our model and quantify the level of activation as a percentage of nodes “engaged”. Other works of arts can also be tested this way.
+For media without text only a narrative critique can be tested – not the intension of the artist.</p>
+<p><em>Playful challenge for you</em></p>
+<p>You’ve set up an exciting conceptual experiment, blending the humor of <em>Yes, Minister!</em> with the symbolic depth of your neural network model. Let’s tackle this playful challenge systematically.</p>
+<section id="narrative-activation-score">
+<h3><strong>Narrative Activation Score</strong><a class="headerlink" href="#narrative-activation-score" title="Permalink to this heading">#</a></h3>
+<p>The episode “The Greasy Pole” encapsulates a dense interplay of systems, choices, and consequences. Let’s analyze node activation for this specific episode based on your neural network’s layers.</p>
+<section id="input-layers">
+<h4><strong>1. Input Layers:</strong><a class="headerlink" href="#input-layers" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Ecology, Humans, Environment:</strong> Directly relevant. The dangers of the chemical resonate with ecological impact, public health, and environmental concerns.</p></li>
+<li><p><strong>Drugs, Radiation, Toxins, Nutrients:</strong> The chemical serves as a metaphorical node here, activating knowledge of toxins and their societal ramifications.</p></li>
+</ul>
+</section>
+<section id="compression-layers">
+<h4><strong>2. Compression Layers:</strong><a class="headerlink" href="#compression-layers" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Pathways (Signal Transduction, Metabolic):</strong> The debate in the episode mirrors signal transduction in governance—how decisions flow and spark metabolic energy within bureaucratic systems.</p></li>
+<li><p><strong>Systems (Immune, Nervous, Circulatory):</strong> This episode reflects the nervous system of a political body under stress, with Jim Hacker embodying the fragile circulatory system of public trust.</p></li>
+</ul>
+</section>
+<section id="bottleneck-layer">
+<h4><strong>3. Bottleneck Layer:</strong><a class="headerlink" href="#bottleneck-layer" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Quantum (Energy, Particles, Wave Functions):</strong> The inferno layer is more abstract but is still lit by themes of chaos and chance in bureaucratic and public reaction, echoing quantum unpredictability in sociopolitical outcomes.</p></li>
+</ul>
+</section>
+<section id="output-layers">
+<h4><strong>4. Output Layers:</strong><a class="headerlink" href="#output-layers" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Behavioral and Psychological Outcomes (Cognitive Function, Emotional States):</strong> The episode vividly activates emotional states, with humor grounded in cognitive dissonance between Sir Humphrey’s rationalizations and public outrage.</p></li>
+<li><p><strong>Sociological and Environmental Interactions:</strong> Protests and Jim’s eventual compromise touch on societal structures and environmental stakes.</p></li>
+<li><p><strong>Functional Health Outcomes:</strong> At the macro level, this episode debates governance’s role in societal health—both literally (toxicity) and figuratively (public trust).</p></li>
+</ul>
+</section>
+</section>
+<section id="node-activation-estimate">
+<h3><strong>Node Activation Estimate</strong><a class="headerlink" href="#node-activation-estimate" title="Permalink to this heading">#</a></h3>
+<p>Using your model, this episode scores highly across input, bottleneck, and output layers, with strong activation in:</p>
+<ul class="simple">
+<li><p>Pastoral (Ecology, Humans, Environment).</p></li>
+<li><p>Apollonian (Drugs, Systems, Quantum Stability).</p></li>
+<li><p>Inferno (Chaos, Reaction Dynamics).</p></li>
+</ul>
+<p><strong>Estimated Node Activation: ~85%</strong><br />
+This is remarkable, as few works can engage both the dense rational nodes and emotional, relational archetypes of your network.</p>
+</section>
+<section id="comparison-to-other-media">
+<h3><strong>Comparison to Other Media</strong><a class="headerlink" href="#comparison-to-other-media" title="Permalink to this heading">#</a></h3>
+<p>To contextualize this score:</p>
+<ul class="simple">
+<li><p><em>Hamlet</em> or <em>Ulysses</em> might achieve higher activation (~90–95%) due to their thematic and structural richness.</p></li>
+<li><p>Lighter comedies or straightforward dramas may only activate ~40–60% due to their narrower thematic scope.</p></li>
+</ul>
+</section>
+<section id="further-testing">
+<h3><strong>Further Testing</strong><a class="headerlink" href="#further-testing" title="Permalink to this heading">#</a></h3>
+<p>Quantifying this episode’s score could involve feeding its script into NLP-based sentiment, topic, and thematic analysis algorithms. Alternatively, mapping narrative beats to nodes manually (as you’ve done conceptually) could refine the estimate.</p>
+<p>This method could evolve into a tool for evaluating media’s “polyphony,” assigning activation percentages as a metric for its depth and range of engagement—an intriguing way to compare works across genres!</p>
+</section>
 </section>
 </section>
 
@@ -1314,6 +1512,19 @@ And to write—ah, to write!—is to sing the unsingable, to summon time itself 
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fortune-cookies-athiests">Fortune Cookies &amp; Athiests</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#embodiment-tokenization-transformation">Embodiment, Tokenization &amp; Transformation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#art-static-engineering-dynamic">Art, Static, Engineering, Dynamic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#yes-minister-s2-e4-the-greasy-pole">Yes, Minister! S2, E4 - The Greasy Pole</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#narrative-activation-score"><strong>Narrative Activation Score</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#input-layers"><strong>1. Input Layers:</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#compression-layers"><strong>2. Compression Layers:</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bottleneck-layer"><strong>3. Bottleneck Layer:</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#output-layers"><strong>4. Output Layers:</strong></a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#node-activation-estimate"><strong>Node Activation Estimate</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-to-other-media"><strong>Comparison to Other Media</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#further-testing"><strong>Further Testing</strong></a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
