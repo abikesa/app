@@ -515,6 +515,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-british-chemistry-corporation">The British Chemistry Corporation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#propanol-contamination">Propanol Contamination</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#political-chemistry">Political Chemistry</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion-of-specific-chemistry-corporation-impacts">Discussion of Specific Chemistry Corporation Impacts</a></li>
 </ul>
 </li>
 </ul>
@@ -2261,20 +2262,20 @@ This is remarkable, as few works can engage both the dense rational nodes and em
         <span class="n">x</span> <span class="o">=</span> <span class="n">j</span> <span class="o">*</span> <span class="n">node_spacing</span> <span class="o">-</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">node_spacing</span> <span class="o">/</span> <span class="mi">2</span>
         <span class="n">pos_full_biology</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
-<span class="c1"># Define custom colors for specific nodes</span>
-<span class="n">custom_colors</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">&quot;Propanol Contamination&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;Public Trust&quot;</span><span class="p">:</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;Political Fallout&quot;</span><span class="p">:</span> <span class="s2">&quot;purple&quot;</span>
+<span class="c1"># Define specific colors for the compression layer nodes</span>
+<span class="n">compression_colors_specific</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Electron Transfer&quot;</span><span class="p">:</span> <span class="s2">&quot;lightsalmon&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Molecular Stability&quot;</span><span class="p">:</span> <span class="s2">&quot;paleturquoise&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Reaction Dynamics&quot;</span><span class="p">:</span> <span class="s2">&quot;lightgreen&quot;</span>
 <span class="p">}</span>
 
 <span class="c1"># Assign colors to nodes, default to gray</span>
-<span class="n">node_colors</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">node_colors_specific</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">G_full_biology</span><span class="o">.</span><span class="n">nodes</span><span class="p">():</span>
-    <span class="k">if</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">custom_colors</span><span class="p">:</span>
-        <span class="n">node_colors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">custom_colors</span><span class="p">[</span><span class="n">node</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">compression_colors_specific</span><span class="p">:</span>
+        <span class="n">node_colors_specific</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">compression_colors_specific</span><span class="p">[</span><span class="n">node</span><span class="p">])</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">node_colors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;lightgray&quot;</span><span class="p">)</span>  <span class="c1"># Default color</span>
+        <span class="n">node_colors_specific</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;lightgray&quot;</span><span class="p">)</span>  <span class="c1"># Default color</span>
 
 <span class="c1"># Highlight the Political Chemistry Path</span>
 <span class="n">political_chemistry_path</span> <span class="o">=</span> <span class="p">[</span>
@@ -2288,7 +2289,7 @@ This is remarkable, as few works can engage both the dense rational nodes and em
     <span class="s2">&quot;Disease Risk&quot;</span>
 <span class="p">]</span>
 
-<span class="c1"># Update the graph to reflect the extended path</span>
+<span class="c1"># Update edge weights for the path</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">political_chemistry_path</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
     <span class="n">G_full_biology</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">political_chemistry_path</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">political_chemistry_path</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">weight</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 
@@ -2300,18 +2301,18 @@ This is remarkable, as few works can engage both the dense rational nodes and em
     <span class="k">else</span><span class="p">:</span>
         <span class="n">edge_widths</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>  <span class="c1"># Default edge width</span>
 
-<span class="c1"># Draw the graph with the extended path emphasized</span>
+<span class="c1"># Draw the graph with the specific compression colors applied</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
 
 <span class="c1"># Draw nodes and labels</span>
-<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_nodes</span><span class="p">(</span><span class="n">G_full_biology</span><span class="p">,</span> <span class="n">pos_full_biology</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="n">node_colors</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_nodes</span><span class="p">(</span><span class="n">G_full_biology</span><span class="p">,</span> <span class="n">pos_full_biology</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="n">node_colors_specific</span><span class="p">)</span>
 <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_labels</span><span class="p">(</span><span class="n">G_full_biology</span><span class="p">,</span> <span class="n">pos_full_biology</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">font_weight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">)</span>
 
 <span class="c1"># Draw edges with varying thickness</span>
 <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">G_full_biology</span><span class="p">,</span> <span class="n">pos_full_biology</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">edge_widths</span><span class="p">,</span> <span class="n">edge_color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
 
 <span class="c1"># Add a title and clean up axes</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Neural Network with Political Chemistry Path Highlighted&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Neural Network with Specific Compression Colors and Political Chemistry Path Highlighted&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -2319,9 +2320,17 @@ This is remarkable, as few works can engage both the dense rational nodes and em
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../_images/c78f13fed53d2651a3eee701cf3e8065f919c4feb60024ff15feb1bbb55dbb75.png" src="../_images/c78f13fed53d2651a3eee701cf3e8065f919c4feb60024ff15feb1bbb55dbb75.png" />
+<img alt="../_images/faf2aac777f4b6a1e97dce02090378877e4f62adbd0476f0c0d5161487957059.png" src="../_images/faf2aac777f4b6a1e97dce02090378877e4f62adbd0476f0c0d5161487957059.png" />
 </div>
 </div>
+</section>
+<hr class="docutils" />
+<section id="discussion-of-specific-chemistry-corporation-impacts">
+<h3>Discussion of Specific Chemistry Corporation Impacts<a class="headerlink" href="#discussion-of-specific-chemistry-corporation-impacts" title="Permalink to this heading">#</a></h3>
+<p>The graph demonstrates the cascading impacts of environmental and industrial failings, such as propanol contamination, through biological, ecological, and societal systems. Key nodes like <strong>“Toxins”</strong> link directly to biological pathways (e.g., “Signal Transduction”), leading to cellular and tissue-level changes (e.g., immune and neural responses). These ripple into broader physiological effects, including <strong>“Stress Response”</strong>, before influencing societal outcomes like <strong>“Environmental Interactions”</strong> and <strong>“Functional Fitness.”</strong></p>
+<p>The highlighted compression layer nodes—<strong>Electron Transfer, Molecular Stability, and Reaction Dynamics</strong>—are crucial for understanding how contaminants disrupt molecular dynamics, propagating damage at a cellular level. Electron transfer imbalances, for instance, could exacerbate oxidative stress, destabilizing critical proteins and triggering systemic inflammation.</p>
+<p>Industrially, this reveals how corporate mismanagement (e.g., chemical spills) not only harms human health but also erodes public trust and induces political fallout. As policy decisions try to manage these crises, the graph underscores the need for systemic oversight and robust scientific committees to prevent such cascading failures.</p>
+<p>This framework could inform both mitigation strategies and regulatory policies, emphasizing the intricate interplay between industrial activities, environmental health, and societal outcomes. Let me know if you’d like to expand this further!</p>
 </section>
 </section>
 </section>
@@ -2513,6 +2522,7 @@ This is remarkable, as few works can engage both the dense rational nodes and em
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-british-chemistry-corporation">The British Chemistry Corporation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#propanol-contamination">Propanol Contamination</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#political-chemistry">Political Chemistry</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion-of-specific-chemistry-corporation-impacts">Discussion of Specific Chemistry Corporation Impacts</a></li>
 </ul>
 </li>
 </ul>
