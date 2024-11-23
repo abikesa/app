@@ -579,6 +579,12 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#it-s-complicated">It’s Complicated</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chosen-compression-layer-adversarial-transactional-cooperative">Chosen Compression Layer: <strong>Adversarial-Transactional-Cooperative</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adjustments-to-the-model">Adjustments to the Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-fix">Key Fix:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#updated-code">Updated Code</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#heres-the-revised-implementation">Here’s the revised implementation:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#whats-new">What’s New:</a></li>
 </ul>
 </li>
 </ul>
@@ -3291,38 +3297,64 @@ While the network grows, it is important to recognize the limitations imposed by
     <span class="s2">&quot;Institutional Dynamics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Efficiency&#39;</span><span class="p">,</span> <span class="s1">&#39;Reform&#39;</span><span class="p">,</span> <span class="s1">&#39;Corruption&#39;</span><span class="p">]</span>
 <span class="p">}</span>
 
-<span class="c1"># Step 4: Merge all layers</span>
+<span class="c1"># Step 4: Define sequential progression layer</span>
+<span class="n">progression_path</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;Winning Constituency&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;Cabinet Appointment&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;Party Chair&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;Prime Minister&quot;</span>
+<span class="p">]</span>
+
+<span class="c1"># Step 5: Merge all layers</span>
 <span class="n">full_layers_with_compression</span> <span class="o">=</span> <span class="p">{</span>
     <span class="o">**</span><span class="n">input_layers_updated</span><span class="p">,</span>
     <span class="s2">&quot;Compression Layer&quot;</span><span class="p">:</span> <span class="n">compression_layer</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">output_layers_updated</span>
+    <span class="o">**</span><span class="n">output_layers_updated</span><span class="p">,</span>
+    <span class="s2">&quot;Progression Path&quot;</span><span class="p">:</span> <span class="n">progression_path</span>
 <span class="p">}</span>
 
-<span class="c1"># Step 5: Initialize the graph</span>
+<span class="c1"># Step 6: Initialize the graph</span>
 <span class="n">G_with_compression</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
 
-<span class="c1"># Step 6: Add nodes for each layer</span>
+<span class="c1"># Step 7: Add nodes for each layer</span>
 <span class="k">for</span> <span class="n">layer_name</span><span class="p">,</span> <span class="n">nodes</span> <span class="ow">in</span> <span class="n">full_layers_with_compression</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="n">G_with_compression</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">layer</span><span class="o">=</span><span class="n">layer_name</span><span class="p">)</span>
 
-<span class="c1"># Step 7: Connect input layers to compression layer</span>
+<span class="c1"># Step 8: Connect input layers to compression layer</span>
 <span class="n">input_layer_nodes</span> <span class="o">=</span> <span class="p">[</span><span class="n">node</span> <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">input_layers_updated</span><span class="o">.</span><span class="n">values</span><span class="p">()</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">layer</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">input_node</span> <span class="ow">in</span> <span class="n">input_layer_nodes</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">compression_node</span> <span class="ow">in</span> <span class="n">compression_layer</span><span class="p">:</span>
         <span class="n">G_with_compression</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">input_node</span><span class="p">,</span> <span class="n">compression_node</span><span class="p">)</span>
 
-<span class="c1"># Step 8: Connect compression layer to output layers</span>
+<span class="c1"># Step 9: Connect compression layer to output layers</span>
 <span class="n">output_layer_nodes</span> <span class="o">=</span> <span class="p">[</span><span class="n">node</span> <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">output_layers_updated</span><span class="o">.</span><span class="n">values</span><span class="p">()</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">layer</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">compression_node</span> <span class="ow">in</span> <span class="n">compression_layer</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">output_node</span> <span class="ow">in</span> <span class="n">output_layer_nodes</span><span class="p">:</span>
         <span class="n">G_with_compression</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">compression_node</span><span class="p">,</span> <span class="n">output_node</span><span class="p">)</span>
 
-<span class="c1"># Step 9: Define node positions for visualization</span>
+<span class="c1"># Step 10: Connect progression path nodes sequentially</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">progression_path</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">G_with_compression</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">progression_path</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">progression_path</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>
+
+<span class="c1"># Step 11: Connect input layers to the first node in progression path</span>
+<span class="k">for</span> <span class="n">input_node</span> <span class="ow">in</span> <span class="n">input_layer_nodes</span><span class="p">:</span>
+    <span class="n">G_with_compression</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">input_node</span><span class="p">,</span> <span class="n">progression_path</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="c1"># Step 12: Connect progression path to compression layer</span>
+<span class="k">for</span> <span class="n">progression_node</span> <span class="ow">in</span> <span class="n">progression_path</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">compression_node</span> <span class="ow">in</span> <span class="n">compression_layer</span><span class="p">:</span>
+        <span class="n">G_with_compression</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">progression_node</span><span class="p">,</span> <span class="n">compression_node</span><span class="p">)</span>
+
+<span class="c1"># Step 13: Connect the final progression path node to output layers</span>
+<span class="k">for</span> <span class="n">output_node</span> <span class="ow">in</span> <span class="n">output_layer_nodes</span><span class="p">:</span>
+    <span class="n">G_with_compression</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">progression_path</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">output_node</span><span class="p">)</span>
+
+<span class="c1"># Step 14: Define node positions for visualization</span>
 <span class="n">pos_with_compression</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="n">layer_spacing</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">node_spacing</span> <span class="o">=</span> <span class="mf">1.5</span>
 
-<span class="c1"># Position input layers</span>
+<span class="c1"># Position all layers</span>
 <span class="n">layer_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">full_layers_with_compression</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">layer_name</span><span class="p">,</span> <span class="n">nodes</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">full_layers_with_compression</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
     <span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="n">i</span> <span class="o">*</span> <span class="n">layer_spacing</span> <span class="o">+</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">layer_names</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">layer_spacing</span> <span class="o">/</span> <span class="mi">2</span>
@@ -3330,42 +3362,44 @@ While the network grows, it is important to recognize the limitations imposed by
         <span class="n">x</span> <span class="o">=</span> <span class="n">j</span> <span class="o">*</span> <span class="n">node_spacing</span> <span class="o">-</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">node_spacing</span> <span class="o">/</span> <span class="mi">2</span>
         <span class="n">pos_with_compression</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
-<span class="c1"># Step 10: Assign colors to compression layer nodes</span>
+<span class="c1"># Step 15: Assign colors to compression layer and progression path nodes</span>
 <span class="n">compression_colors_with_compression</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;Adversarial&quot;</span><span class="p">:</span> <span class="s2">&quot;lightsalmon&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Transactional&quot;</span><span class="p">:</span> <span class="s2">&quot;lightgreen&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Cooperative&quot;</span><span class="p">:</span> <span class="s2">&quot;paleturquoise&quot;</span>
 <span class="p">}</span>
 
+<span class="c1"># Assign specific colors to progression nodes</span>
+<span class="n">progression_colors</span> <span class="o">=</span> <span class="p">{</span><span class="n">node</span><span class="p">:</span> <span class="s2">&quot;gold&quot;</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">progression_path</span><span class="p">}</span>
+
 <span class="c1"># Assign node colors, defaulting to gray for other nodes</span>
 <span class="n">node_colors_with_compression</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">G_with_compression</span><span class="o">.</span><span class="n">nodes</span><span class="p">():</span>
     <span class="k">if</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">compression_colors_with_compression</span><span class="p">:</span>
         <span class="n">node_colors_with_compression</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">compression_colors_with_compression</span><span class="p">[</span><span class="n">node</span><span class="p">])</span>
+    <span class="k">elif</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">progression_colors</span><span class="p">:</span>
+        <span class="n">node_colors_with_compression</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">progression_colors</span><span class="p">[</span><span class="n">node</span><span class="p">])</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">node_colors_with_compression</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;lightgray&quot;</span><span class="p">)</span>  <span class="c1"># Default color</span>
 
-<span class="c1"># Step 11: Draw the graph with updated compression layer</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">18</span><span class="p">))</span>
+<span class="c1"># Step 16: Draw the graph with updated compression layer and progression path</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">18</span><span class="p">))</span>
 <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_nodes</span><span class="p">(</span>
-    <span class="n">G_with_compression</span><span class="p">,</span> <span class="n">pos_with_compression</span><span class="p">,</span> 
+    <span class="n">G_with_compression</span><span class="p">,</span> <span class="n">pos_with_compression</span><span class="p">,</span>
     <span class="n">node_size</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="n">node_colors_with_compression</span>
 <span class="p">)</span>
-<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_labels</span><span class="p">(</span>
-    <span class="n">G_with_compression</span><span class="p">,</span> <span class="n">pos_with_compression</span><span class="p">,</span> 
-    <span class="n">font_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">font_weight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span>
-<span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_labels</span><span class="p">(</span><span class="n">G_with_compression</span><span class="p">,</span> <span class="n">pos_with_compression</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">font_weight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">)</span>
 <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">G_with_compression</span><span class="p">,</span> <span class="n">pos_with_compression</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">edge_color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Neural Network with Explicit Compression Layer (Equilibria)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Governance Network with Sequential Progression and Compression Layer&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../_images/fb9e7c5f2ce4174ce1338be17275fdcc7837fcb599c4285dd5afc2435e44e7cf.png" src="../_images/fb9e7c5f2ce4174ce1338be17275fdcc7837fcb599c4285dd5afc2435e44e7cf.png" />
+<img alt="../_images/bc4f8baf2626e2ccfcc4feac39f58a4aafbccf0e614e23ff442e3412ed05f04d.png" src="../_images/bc4f8baf2626e2ccfcc4feac39f58a4aafbccf0e614e23ff442e3412ed05f04d.png" />
 </div>
 </div>
 <figure class="align-default" id="id25">
@@ -3374,6 +3408,55 @@ While the network grows, it is important to recognize the limitations imposed by
 <p><span class="caption-number">Fig. 14 </span><span class="caption-text">This model highlights the dynamic interplay between stakeholders in the governance framework, echoing the satirical critique of <em>Yes, Minister!</em> through its structural representation of political machinations. The compression layer conceptually captures the equilibria (Adversarial, Transactional, Cooperative), it is explicitly visualized and connected to the input-output relationships in the current implementation. This approach explicitly showcases the equilibria as bottleneck nodes, making their role in the network visually and structurally central.</span><a class="headerlink" href="#id25" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+<p>We have logical connections between the <strong>progression path</strong> and other layers, such as the <strong>compression layer</strong> or the <strong>input/output nodes</strong>.</p>
+<p>Here’s how to address this:</p>
+</section>
+<section id="key-fix">
+<h3>Key Fix:<a class="headerlink" href="#key-fix" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Connect Input Layers to Progression Path</strong>:</p>
+<ul class="simple">
+<li><p>Link the input layer nodes (e.g., “Ambition,” “Electorate”) to the first node in the progression path (“Winning Constituency”).</p></li>
+</ul>
+</li>
+<li><p><strong>Connect Progression Path to Compression Layer</strong>:</p>
+<ul class="simple">
+<li><p>Link nodes in the progression path to the compression layer nodes (e.g., “Winning Constituency” → “Adversarial”).</p></li>
+</ul>
+</li>
+<li><p><strong>Integrate Progression Path with Output Layers</strong>:</p>
+<ul class="simple">
+<li><p>Link the final node in the progression path (“Prime Minister”) to the output layer nodes.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="updated-code">
+<h3>Updated Code<a class="headerlink" href="#updated-code" title="Permalink to this heading">#</a></h3>
+</section>
+</section>
+<section id="heres-the-revised-implementation">
+<h2>Here’s the revised implementation:<a class="headerlink" href="#heres-the-revised-implementation" title="Permalink to this heading">#</a></h2>
+<section id="whats-new">
+<h3>What’s New:<a class="headerlink" href="#whats-new" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Edges from Input Layers to Progression Path</strong>:</p>
+<ul class="simple">
+<li><p>Input nodes now connect to “Winning Constituency” (e.g., ambition drives electoral success).</p></li>
+</ul>
+</li>
+<li><p><strong>Edges from Progression Path to Compression Layer</strong>:</p>
+<ul class="simple">
+<li><p>Each progression node feeds into equilibria (e.g., strategies shift between adversarial, transactional, or cooperative).</p></li>
+</ul>
+</li>
+<li><p><strong>Edges from Progression Path to Output Layers</strong>:</p>
+<ul class="simple">
+<li><p>“Prime Minister” connects to outcomes like legislation and public trust.</p></li>
+</ul>
+</li>
+</ol>
+<p>This ensures the <strong>gold progression nodes</strong> are fully integrated with the rest of the network. You’ll now see edges connecting the progression layer to other nodes!</p>
 </section>
 </section>
 </section>
@@ -3629,6 +3712,12 @@ While the network grows, it is important to recognize the limitations imposed by
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#it-s-complicated">It’s Complicated</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chosen-compression-layer-adversarial-transactional-cooperative">Chosen Compression Layer: <strong>Adversarial-Transactional-Cooperative</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adjustments-to-the-model">Adjustments to the Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-fix">Key Fix:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#updated-code">Updated Code</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#heres-the-revised-implementation">Here’s the revised implementation:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#whats-new">What’s New:</a></li>
 </ul>
 </li>
 </ul>
