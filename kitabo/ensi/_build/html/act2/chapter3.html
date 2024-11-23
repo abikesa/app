@@ -576,7 +576,11 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#it-s-complicated">It’s Complicated</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#it-s-complicated">It’s Complicated</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chosen-compression-layer-adversarial-transactional-cooperative">Chosen Compression Layer: <strong>Adversarial-Transactional-Cooperative</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adjustments-to-the-model">Adjustments to the Model</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -3209,6 +3213,147 @@ While the network grows, it is important to recognize the limitations imposed by
 <p><span class="caption-number">Fig. 13 </span><span class="caption-text"><em>Yes, Minister. S3, E8 - Special: Party Games</em>. By the way, Humphrey, I’ve decided to retire early in the new year. My successor has to be someone who can be <code class="docutils literal notranslate"><span class="pre">firm</span></code> (adversarial) with our political masters, but <code class="docutils literal notranslate"><span class="pre">tactful</span></code> (iterative) – exactly, suave, charming, emolient – and above all <code class="docutils literal notranslate"><span class="pre">sound</span></code> (cooperative). So my heavy duty is to convey a recommendation to the Prime Minister as to which of the present day Permanent Secretaries best meets these stringent criteria.</span><a class="headerlink" href="#id24" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+<p>To modify the neural network and align it with the themes of <em>Yes, Minister!</em> while maintaining a strong thematic compression layer, we need to capture the essence of bureaucratic politicking, the interplay of personal ambition, institutional inertia, and the occasional spark of genuine idealism. The bottleneck will reflect the following dimensions:</p>
+<section id="chosen-compression-layer-adversarial-transactional-cooperative">
+<h3>Chosen Compression Layer: <strong>Adversarial-Transactional-Cooperative</strong><a class="headerlink" href="#chosen-compression-layer-adversarial-transactional-cooperative" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Adversarial (lightsalmon):</strong> Represents the push-and-pull between departments, personal ambitions, and public accountability.</p></li>
+<li><p><strong>Transactional (lightgreen):</strong> Reflects the pragmatic exchanges, deal-making, and negotiations necessary to navigate bureaucracy.</p></li>
+<li><p><strong>Cooperative (paleturquoise):</strong> Symbolizes moments of alignment between political actors, civil servants, and public interests, albeit often temporary.</p></li>
+</ul>
+</section>
+<section id="adjustments-to-the-model">
+<h3>Adjustments to the Model<a class="headerlink" href="#adjustments-to-the-model" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Input Layer Themes:</strong></p>
+<ul class="simple">
+<li><p>Adapt input nodes to reflect systems relevant to governance:</p>
+<ul>
+<li><p><strong>Power Structures:</strong> Cabinet, Civil Service, Parliament, Public.</p></li>
+<li><p><strong>External Pressures:</strong> Media, Lobbyists, Electorate, Global Forces.</p></li>
+<li><p><strong>Internal Factors:</strong> Ambition, Competence, Ideology, Opportunism.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Output Layer Themes:</strong></p>
+<ul class="simple">
+<li><p>Highlight sociopolitical outputs:</p>
+<ul>
+<li><p><strong>Policy Outcomes:</strong> Legislation, Public Spending, Regulatory Actions.</p></li>
+<li><p><strong>Behavioral Dynamics:</strong> Media Spin, Public Perception, Voter Trust.</p></li>
+<li><p><strong>Institutional Dynamics:</strong> Efficiency, Reform, Corruption.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Compression Layer Nodes:</strong></p>
+<ul class="simple">
+<li><p>Replace “Firm, Tactful, Sound” with the adversarial-transactional-cooperative dynamic to capture the negotiation, conflict, and eventual (sometimes accidental) outcomes within political decision-making.</p></li>
+</ul>
+</li>
+<li><p><strong>Highlighted Pathways:</strong></p>
+<ul class="simple">
+<li><p>Reflect the progression of ideas within governance:</p>
+<ul>
+<li><p>Start with public pressures → Civil Service adjustments → Ministerial decisions → Policy execution → Public reaction.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>Below is the adapted neural network implementation:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define layers for the input phase (reflecting governance themes)</span>
+<span class="n">input_layers_updated</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Power Structures&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Cabinet&#39;</span><span class="p">,</span> <span class="s1">&#39;Civil Service&#39;</span><span class="p">,</span> <span class="s1">&#39;Parliament&#39;</span><span class="p">,</span> <span class="s1">&#39;Public&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;External Pressures&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Media&#39;</span><span class="p">,</span> <span class="s1">&#39;Lobbyists&#39;</span><span class="p">,</span> <span class="s1">&#39;Electorate&#39;</span><span class="p">,</span> <span class="s1">&#39;Global Forces&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Internal Factors&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Ambition&#39;</span><span class="p">,</span> <span class="s1">&#39;Competence&#39;</span><span class="p">,</span> <span class="s1">&#39;Ideology&#39;</span><span class="p">,</span> <span class="s1">&#39;Opportunism&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Systems of Governance&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Education&#39;</span><span class="p">,</span> <span class="s1">&#39;Health&#39;</span><span class="p">,</span> <span class="s1">&#39;Defense&#39;</span><span class="p">,</span> <span class="s1">&#39;Economy&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># Define layers for the output phase (policy and behavioral outcomes)</span>
+<span class="n">output_layers_updated</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Policy Outcomes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Legislation&#39;</span><span class="p">,</span> <span class="s1">&#39;Public Spending&#39;</span><span class="p">,</span> <span class="s1">&#39;Regulatory Actions&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Behavioral Dynamics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Media Spin&#39;</span><span class="p">,</span> <span class="s1">&#39;Public Perception&#39;</span><span class="p">,</span> <span class="s1">&#39;Voter Trust&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Institutional Dynamics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Efficiency&#39;</span><span class="p">,</span> <span class="s1">&#39;Reform&#39;</span><span class="p">,</span> <span class="s1">&#39;Corruption&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># Merge the input and output layers</span>
+<span class="n">updated_layers</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="n">input_layers_updated</span><span class="p">,</span> <span class="o">**</span><span class="n">output_layers_updated</span><span class="p">}</span>
+
+<span class="c1"># Initialize the graph</span>
+<span class="n">G_updated</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+
+<span class="c1"># Add nodes for each layer</span>
+<span class="k">for</span> <span class="n">layer_name</span><span class="p">,</span> <span class="n">nodes</span> <span class="ow">in</span> <span class="n">updated_layers</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">G_updated</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">layer</span><span class="o">=</span><span class="n">layer_name</span><span class="p">)</span>
+
+<span class="c1"># Connect layers sequentially</span>
+<span class="n">updated_layer_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">updated_layers</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">updated_layer_names</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">source_layer</span> <span class="o">=</span> <span class="n">updated_layers</span><span class="p">[</span><span class="n">updated_layer_names</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+    <span class="n">target_layer</span> <span class="o">=</span> <span class="n">updated_layers</span><span class="p">[</span><span class="n">updated_layer_names</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]]</span>
+    <span class="k">for</span> <span class="n">source_node</span> <span class="ow">in</span> <span class="n">source_layer</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">target_node</span> <span class="ow">in</span> <span class="n">target_layer</span><span class="p">:</span>
+            <span class="n">G_updated</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">source_node</span><span class="p">,</span> <span class="n">target_node</span><span class="p">)</span>
+
+<span class="c1"># Define node positions for visualization</span>
+<span class="n">pos_updated</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">layer_spacing</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">node_spacing</span> <span class="o">=</span> <span class="mf">1.5</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">layer_name</span><span class="p">,</span> <span class="n">nodes</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">updated_layers</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="n">i</span> <span class="o">*</span> <span class="n">layer_spacing</span> <span class="o">+</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">updated_layer_names</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">layer_spacing</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nodes</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">j</span> <span class="o">*</span> <span class="n">node_spacing</span> <span class="o">-</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">node_spacing</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="n">pos_updated</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># Define compression colors for adversarial, transactional, cooperative</span>
+<span class="n">compression_colors_updated</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Adversarial&quot;</span><span class="p">:</span> <span class="s2">&quot;lightsalmon&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Transactional&quot;</span><span class="p">:</span> <span class="s2">&quot;lightgreen&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Cooperative&quot;</span><span class="p">:</span> <span class="s2">&quot;paleturquoise&quot;</span>
+<span class="p">}</span>
+
+<span class="c1"># Assign colors to nodes</span>
+<span class="n">node_colors_updated</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">G_updated</span><span class="o">.</span><span class="n">nodes</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">compression_colors_updated</span><span class="p">:</span>
+        <span class="n">node_colors_updated</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">compression_colors_updated</span><span class="p">[</span><span class="n">node</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">node_colors_updated</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;lightgray&quot;</span><span class="p">)</span>  <span class="c1"># Default color</span>
+
+<span class="c1"># Draw the graph with updated compression colors</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">18</span><span class="p">))</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_nodes</span><span class="p">(</span><span class="n">G_updated</span><span class="p">,</span> <span class="n">pos_updated</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="n">node_colors_updated</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_labels</span><span class="p">(</span><span class="n">G_updated</span><span class="p">,</span> <span class="n">pos_updated</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">font_weight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">G_updated</span><span class="p">,</span> <span class="n">pos_updated</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">edge_color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Neural Network Reflecting &#39;Yes, Minister!&#39;&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/c13162605d0c096e6695cb9c1c76b0b97a3b610a77e500ac288fd22b54ff4182.png" src="../_images/c13162605d0c096e6695cb9c1c76b0b97a3b610a77e500ac288fd22b54ff4182.png" />
+</div>
+</div>
+<figure class="align-default" id="id25">
+<a class="reference internal image-reference" href="figures/blanche.*"><img alt="figures/blanche.*" src="figures/blanche.*" style="width: 1px; height: 1px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">This model highlights the dynamic interplay between stakeholders in the governance framework, echoing the satirical critique of <em>Yes, Minister!</em> through its structural representation of political machinations.</span><a class="headerlink" href="#id25" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
 </section>
 </section>
 
@@ -3460,7 +3605,11 @@ While the network grows, it is important to recognize the limitations imposed by
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#it-s-complicated">It’s Complicated</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#it-s-complicated">It’s Complicated</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chosen-compression-layer-adversarial-transactional-cooperative">Chosen Compression Layer: <strong>Adversarial-Transactional-Cooperative</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adjustments-to-the-model">Adjustments to the Model</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
