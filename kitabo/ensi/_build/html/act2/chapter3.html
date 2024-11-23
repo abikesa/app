@@ -3270,7 +3270,10 @@ While the network grows, it is important to recognize the limitations imposed by
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define layers for the input phase (reflecting governance themes)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Step 1: Define input layers (governance themes)</span>
 <span class="n">input_layers_updated</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;Power Structures&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Cabinet&#39;</span><span class="p">,</span> <span class="s1">&#39;Civil Service&#39;</span><span class="p">,</span> <span class="s1">&#39;Parliament&#39;</span><span class="p">,</span> <span class="s1">&#39;Public&#39;</span><span class="p">],</span>
     <span class="s2">&quot;External Pressures&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Media&#39;</span><span class="p">,</span> <span class="s1">&#39;Lobbyists&#39;</span><span class="p">,</span> <span class="s1">&#39;Electorate&#39;</span><span class="p">,</span> <span class="s1">&#39;Global Forces&#39;</span><span class="p">],</span>
@@ -3278,65 +3281,83 @@ While the network grows, it is important to recognize the limitations imposed by
     <span class="s2">&quot;Systems of Governance&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Education&#39;</span><span class="p">,</span> <span class="s1">&#39;Health&#39;</span><span class="p">,</span> <span class="s1">&#39;Defense&#39;</span><span class="p">,</span> <span class="s1">&#39;Economy&#39;</span><span class="p">]</span>
 <span class="p">}</span>
 
-<span class="c1"># Define layers for the output phase (policy and behavioral outcomes)</span>
+<span class="c1"># Step 2: Define compression layer (equilibria)</span>
+<span class="n">compression_layer</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Adversarial&#39;</span><span class="p">,</span> <span class="s1">&#39;Transactional&#39;</span><span class="p">,</span> <span class="s1">&#39;Cooperative&#39;</span><span class="p">]</span>
+
+<span class="c1"># Step 3: Define output layers (policy and behavioral outcomes)</span>
 <span class="n">output_layers_updated</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;Policy Outcomes&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Legislation&#39;</span><span class="p">,</span> <span class="s1">&#39;Public Spending&#39;</span><span class="p">,</span> <span class="s1">&#39;Regulatory Actions&#39;</span><span class="p">],</span>
     <span class="s2">&quot;Behavioral Dynamics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Media Spin&#39;</span><span class="p">,</span> <span class="s1">&#39;Public Perception&#39;</span><span class="p">,</span> <span class="s1">&#39;Voter Trust&#39;</span><span class="p">],</span>
     <span class="s2">&quot;Institutional Dynamics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Efficiency&#39;</span><span class="p">,</span> <span class="s1">&#39;Reform&#39;</span><span class="p">,</span> <span class="s1">&#39;Corruption&#39;</span><span class="p">]</span>
 <span class="p">}</span>
 
-<span class="c1"># Merge the input and output layers</span>
-<span class="n">updated_layers</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="n">input_layers_updated</span><span class="p">,</span> <span class="o">**</span><span class="n">output_layers_updated</span><span class="p">}</span>
+<span class="c1"># Step 4: Merge all layers</span>
+<span class="n">full_layers_with_compression</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="o">**</span><span class="n">input_layers_updated</span><span class="p">,</span>
+    <span class="s2">&quot;Compression Layer&quot;</span><span class="p">:</span> <span class="n">compression_layer</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">output_layers_updated</span>
+<span class="p">}</span>
 
-<span class="c1"># Initialize the graph</span>
-<span class="n">G_updated</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+<span class="c1"># Step 5: Initialize the graph</span>
+<span class="n">G_with_compression</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
 
-<span class="c1"># Add nodes for each layer</span>
-<span class="k">for</span> <span class="n">layer_name</span><span class="p">,</span> <span class="n">nodes</span> <span class="ow">in</span> <span class="n">updated_layers</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="n">G_updated</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">layer</span><span class="o">=</span><span class="n">layer_name</span><span class="p">)</span>
+<span class="c1"># Step 6: Add nodes for each layer</span>
+<span class="k">for</span> <span class="n">layer_name</span><span class="p">,</span> <span class="n">nodes</span> <span class="ow">in</span> <span class="n">full_layers_with_compression</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">G_with_compression</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">layer</span><span class="o">=</span><span class="n">layer_name</span><span class="p">)</span>
 
-<span class="c1"># Connect layers sequentially</span>
-<span class="n">updated_layer_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">updated_layers</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">updated_layer_names</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
-    <span class="n">source_layer</span> <span class="o">=</span> <span class="n">updated_layers</span><span class="p">[</span><span class="n">updated_layer_names</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
-    <span class="n">target_layer</span> <span class="o">=</span> <span class="n">updated_layers</span><span class="p">[</span><span class="n">updated_layer_names</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]]</span>
-    <span class="k">for</span> <span class="n">source_node</span> <span class="ow">in</span> <span class="n">source_layer</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">target_node</span> <span class="ow">in</span> <span class="n">target_layer</span><span class="p">:</span>
-            <span class="n">G_updated</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">source_node</span><span class="p">,</span> <span class="n">target_node</span><span class="p">)</span>
+<span class="c1"># Step 7: Connect input layers to compression layer</span>
+<span class="n">input_layer_nodes</span> <span class="o">=</span> <span class="p">[</span><span class="n">node</span> <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">input_layers_updated</span><span class="o">.</span><span class="n">values</span><span class="p">()</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">layer</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">input_node</span> <span class="ow">in</span> <span class="n">input_layer_nodes</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">compression_node</span> <span class="ow">in</span> <span class="n">compression_layer</span><span class="p">:</span>
+        <span class="n">G_with_compression</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">input_node</span><span class="p">,</span> <span class="n">compression_node</span><span class="p">)</span>
 
-<span class="c1"># Define node positions for visualization</span>
-<span class="n">pos_updated</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="c1"># Step 8: Connect compression layer to output layers</span>
+<span class="n">output_layer_nodes</span> <span class="o">=</span> <span class="p">[</span><span class="n">node</span> <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">output_layers_updated</span><span class="o">.</span><span class="n">values</span><span class="p">()</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">layer</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">compression_node</span> <span class="ow">in</span> <span class="n">compression_layer</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">output_node</span> <span class="ow">in</span> <span class="n">output_layer_nodes</span><span class="p">:</span>
+        <span class="n">G_with_compression</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">compression_node</span><span class="p">,</span> <span class="n">output_node</span><span class="p">)</span>
+
+<span class="c1"># Step 9: Define node positions for visualization</span>
+<span class="n">pos_with_compression</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="n">layer_spacing</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">node_spacing</span> <span class="o">=</span> <span class="mf">1.5</span>
 
-<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">layer_name</span><span class="p">,</span> <span class="n">nodes</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">updated_layers</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="n">i</span> <span class="o">*</span> <span class="n">layer_spacing</span> <span class="o">+</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">updated_layer_names</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">layer_spacing</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="c1"># Position input layers</span>
+<span class="n">layer_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">full_layers_with_compression</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">layer_name</span><span class="p">,</span> <span class="n">nodes</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">full_layers_with_compression</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="n">i</span> <span class="o">*</span> <span class="n">layer_spacing</span> <span class="o">+</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">layer_names</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">layer_spacing</span> <span class="o">/</span> <span class="mi">2</span>
     <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nodes</span><span class="p">):</span>
         <span class="n">x</span> <span class="o">=</span> <span class="n">j</span> <span class="o">*</span> <span class="n">node_spacing</span> <span class="o">-</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">node_spacing</span> <span class="o">/</span> <span class="mi">2</span>
-        <span class="n">pos_updated</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="n">pos_with_compression</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
-<span class="c1"># Define compression colors for adversarial, transactional, cooperative</span>
-<span class="n">compression_colors_updated</span> <span class="o">=</span> <span class="p">{</span>
+<span class="c1"># Step 10: Assign colors to compression layer nodes</span>
+<span class="n">compression_colors_with_compression</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;Adversarial&quot;</span><span class="p">:</span> <span class="s2">&quot;lightsalmon&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Transactional&quot;</span><span class="p">:</span> <span class="s2">&quot;lightgreen&quot;</span><span class="p">,</span>
     <span class="s2">&quot;Cooperative&quot;</span><span class="p">:</span> <span class="s2">&quot;paleturquoise&quot;</span>
 <span class="p">}</span>
 
-<span class="c1"># Assign colors to nodes</span>
-<span class="n">node_colors_updated</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">G_updated</span><span class="o">.</span><span class="n">nodes</span><span class="p">():</span>
-    <span class="k">if</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">compression_colors_updated</span><span class="p">:</span>
-        <span class="n">node_colors_updated</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">compression_colors_updated</span><span class="p">[</span><span class="n">node</span><span class="p">])</span>
+<span class="c1"># Assign node colors, defaulting to gray for other nodes</span>
+<span class="n">node_colors_with_compression</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">G_with_compression</span><span class="o">.</span><span class="n">nodes</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">compression_colors_with_compression</span><span class="p">:</span>
+        <span class="n">node_colors_with_compression</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">compression_colors_with_compression</span><span class="p">[</span><span class="n">node</span><span class="p">])</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">node_colors_updated</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;lightgray&quot;</span><span class="p">)</span>  <span class="c1"># Default color</span>
+        <span class="n">node_colors_with_compression</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;lightgray&quot;</span><span class="p">)</span>  <span class="c1"># Default color</span>
 
-<span class="c1"># Draw the graph with updated compression colors</span>
+<span class="c1"># Step 11: Draw the graph with updated compression layer</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">18</span><span class="p">))</span>
-<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_nodes</span><span class="p">(</span><span class="n">G_updated</span><span class="p">,</span> <span class="n">pos_updated</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="n">node_colors_updated</span><span class="p">)</span>
-<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_labels</span><span class="p">(</span><span class="n">G_updated</span><span class="p">,</span> <span class="n">pos_updated</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">font_weight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">)</span>
-<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">G_updated</span><span class="p">,</span> <span class="n">pos_updated</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">edge_color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_nodes</span><span class="p">(</span>
+    <span class="n">G_with_compression</span><span class="p">,</span> <span class="n">pos_with_compression</span><span class="p">,</span> 
+    <span class="n">node_size</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="n">node_colors_with_compression</span>
+<span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_labels</span><span class="p">(</span>
+    <span class="n">G_with_compression</span><span class="p">,</span> <span class="n">pos_with_compression</span><span class="p">,</span> 
+    <span class="n">font_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">font_weight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span>
+<span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">G_with_compression</span><span class="p">,</span> <span class="n">pos_with_compression</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">edge_color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Neural Network Reflecting &#39;Yes, Minister!&#39;&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Neural Network with Explicit Compression Layer (Equilibria)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -3344,13 +3365,13 @@ While the network grows, it is important to recognize the limitations imposed by
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../_images/c13162605d0c096e6695cb9c1c76b0b97a3b610a77e500ac288fd22b54ff4182.png" src="../_images/c13162605d0c096e6695cb9c1c76b0b97a3b610a77e500ac288fd22b54ff4182.png" />
+<img alt="../_images/fb9e7c5f2ce4174ce1338be17275fdcc7837fcb599c4285dd5afc2435e44e7cf.png" src="../_images/fb9e7c5f2ce4174ce1338be17275fdcc7837fcb599c4285dd5afc2435e44e7cf.png" />
 </div>
 </div>
 <figure class="align-default" id="id25">
 <a class="reference internal image-reference" href="figures/blanche.*"><img alt="figures/blanche.*" src="figures/blanche.*" style="width: 1px; height: 1px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 14 </span><span class="caption-text">This model highlights the dynamic interplay between stakeholders in the governance framework, echoing the satirical critique of <em>Yes, Minister!</em> through its structural representation of political machinations.</span><a class="headerlink" href="#id25" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">This model highlights the dynamic interplay between stakeholders in the governance framework, echoing the satirical critique of <em>Yes, Minister!</em> through its structural representation of political machinations. The compression layer conceptually captures the equilibria (Adversarial, Transactional, Cooperative), it is explicitly visualized and connected to the input-output relationships in the current implementation. This approach explicitly showcases the equilibria as bottleneck nodes, making their role in the network visually and structurally central.</span><a class="headerlink" href="#id25" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
