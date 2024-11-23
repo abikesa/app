@@ -587,6 +587,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#whats-new">What’s New:</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-transformed-into-ulysses-narratives">Network Transformed into Ulysses Narratives</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#highlighting-mulligan-in-the-network">Highlighting Mulligan in the Network</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -3459,6 +3463,294 @@ While the network grows, it is important to recognize the limitations imposed by
 <p>This ensures the <strong>gold progression nodes</strong> are fully integrated with the rest of the network. You’ll now see edges connecting the progression layer to other nodes!</p>
 </section>
 </section>
+<section id="network-transformed-into-ulysses-narratives">
+<h2>Network Transformed into Ulysses Narratives<a class="headerlink" href="#network-transformed-into-ulysses-narratives" title="Permalink to this heading">#</a></h2>
+<p>Malachi Mulligan is a fascinating character in <em>Ulysses</em>, both as a foil to Stephen Dedalus and as a symbol of irreverent wit and earthy vitality. His introduction sets the tone for the novel’s exploration of tension between artistic ambition and the pragmatism or decadence of everyday life.</p>
+<p>To integrate Mulligan into the visualization, we could highlight his thematic connections. Mulligan embodies several overlapping elements:</p>
+<ol class="arabic simple">
+<li><p><strong>Narratives</strong>: He’s central to Stephen’s story, acting as a provocateur and counterpoint.</p></li>
+<li><p><strong>Symbolic Motifs</strong>: Mulligan’s irreverence reflects themes of <strong>Paralysis</strong> (his lack of seriousness about higher ideals) and <strong>Odyssey</strong> (as a mocking Penelope-figure in Stephen’s narrative).</p></li>
+<li><p><strong>Sensory Inputs</strong>: His earthy, tangible nature ties into <strong>Taste</strong> (his breakfast preparation) and <strong>Sound</strong> (his bawdy songs and witty banter).</p></li>
+<li><p><strong>Social Interactions</strong>: Mulligan thrives in <strong>Friends</strong> and <strong>Strangers</strong>, contrasting with Stephen’s alienation.</p></li>
+<li><p><strong>Artistic Layers</strong>: Mulligan engages with <strong>Drama</strong> (his performative personality) and <strong>Literature</strong> (his parody of Stephen’s lofty ideals).</p></li>
+</ol>
+<section id="highlighting-mulligan-in-the-network">
+<h3>Highlighting Mulligan in the Network<a class="headerlink" href="#highlighting-mulligan-in-the-network" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Input Nodes</strong>: Add “Mulligan” as an input in <strong>Narratives</strong> and link him to related sensory inputs (e.g., <strong>Taste</strong>, <strong>Sound</strong>) and motifs (<strong>Paralysis</strong>, <strong>Odyssey</strong>).</p></li>
+<li><p><strong>Output Nodes</strong>: Include his influence in outputs like <strong>Cultural Commentary</strong> (e.g., Irish irreverence, colonial influences) and <strong>Emotional States</strong> (e.g., Stephen’s frustration or humor).</p></li>
+<li><p><strong>Pathways</strong>: Create a path reflecting Mulligan’s role in destabilizing and challenging Stephen, linking nodes like <strong>Stephen</strong>, <strong>Mulligan</strong>, <strong>Sound</strong>, <strong>Paralysis</strong>, and <strong>Alienation</strong>.</p></li>
+</ol>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Define input layers for the compression phase inspired by Ulysses</span>
+<span class="n">input_layers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Narratives&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Stephen&#39;</span><span class="p">,</span> <span class="s1">&#39;Bloom&#39;</span><span class="p">,</span> <span class="s1">&#39;Molly&#39;</span><span class="p">,</span> <span class="s1">&#39;Minor Characters&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Temporal Progression&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Morning&#39;</span><span class="p">,</span> <span class="s1">&#39;Afternoon&#39;</span><span class="p">,</span> <span class="s1">&#39;Evening&#39;</span><span class="p">,</span> <span class="s1">&#39;Night&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Dublin&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Places&#39;</span><span class="p">,</span> <span class="s1">&#39;Landmarks&#39;</span><span class="p">,</span> <span class="s1">&#39;Streets&#39;</span><span class="p">,</span> <span class="s1">&#39;Pubs&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Symbolic Motifs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Odyssey&#39;</span><span class="p">,</span> <span class="s1">&#39;Paralysis&#39;</span><span class="p">,</span> <span class="s1">&#39;Catholicism&#39;</span><span class="p">,</span> <span class="s1">&#39;Irish Nationalism&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Sensory Inputs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Sight&#39;</span><span class="p">,</span> <span class="s1">&#39;Sound&#39;</span><span class="p">,</span> <span class="s1">&#39;Taste&#39;</span><span class="p">,</span> <span class="s1">&#39;Touch&#39;</span><span class="p">,</span> <span class="s1">&#39;Smell&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Inner Worlds&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Memories&#39;</span><span class="p">,</span> <span class="s1">&#39;Desires&#39;</span><span class="p">,</span> <span class="s1">&#39;Guilt&#39;</span><span class="p">,</span> <span class="s1">&#39;Fantasies&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Social Interactions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Family&#39;</span><span class="p">,</span> <span class="s1">&#39;Friends&#39;</span><span class="p">,</span> <span class="s1">&#39;Strangers&#39;</span><span class="p">,</span> <span class="s1">&#39;Society&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Artistic Layers&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Literature&#39;</span><span class="p">,</span> <span class="s1">&#39;Music&#39;</span><span class="p">,</span> <span class="s1">&#39;Painting&#39;</span><span class="p">,</span> <span class="s1">&#39;Drama&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># Define output layers for the decompression phase</span>
+<span class="n">output_layers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Character Arcs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Stephen’s Growth&#39;</span><span class="p">,</span> <span class="s1">&#39;Bloom’s Reflection&#39;</span><span class="p">,</span> <span class="s1">&#39;Molly’s Independence&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Emotional States&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Melancholy&#39;</span><span class="p">,</span> <span class="s1">&#39;Hope&#39;</span><span class="p">,</span> <span class="s1">&#39;Resignation&#39;</span><span class="p">,</span> <span class="s1">&#39;Euphoria&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Symbolic Resonances&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Telemachus&#39;</span><span class="p">,</span> <span class="s1">&#39;Odysseus&#39;</span><span class="p">,</span> <span class="s1">&#39;Penelope&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Cultural Commentary&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Colonialism&#39;</span><span class="p">,</span> <span class="s1">&#39;Religion&#39;</span><span class="p">,</span> <span class="s1">&#39;Identity&#39;</span><span class="p">,</span> <span class="s1">&#39;Modernism&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Narrative Experimentation&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Stream of Consciousness&#39;</span><span class="p">,</span> <span class="s1">&#39;Parody&#39;</span><span class="p">,</span> <span class="s1">&#39;Monologue&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Temporal Convergence&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Past Meets Present&#39;</span><span class="p">,</span> <span class="s1">&#39;Momentary Epiphanies&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Societal Reflections&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Alienation&#39;</span><span class="p">,</span> <span class="s1">&#39;Connection&#39;</span><span class="p">,</span> <span class="s1">&#39;Rebellion&#39;</span><span class="p">,</span> <span class="s1">&#39;Tradition&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Overall Legacy&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Influence on Literature&#39;</span><span class="p">,</span> <span class="s1">&#39;Reader Interpretations&#39;</span><span class="p">,</span> <span class="s1">&#39;Cultural Impact&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># Merge the input and output layers to create a full network hierarchy</span>
+<span class="n">full_layers</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="n">input_layers</span><span class="p">,</span> <span class="o">**</span><span class="n">output_layers</span><span class="p">}</span>
+
+<span class="c1"># Initialize the graph</span>
+<span class="n">G_ulysses</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+
+<span class="c1"># Add nodes for each layer</span>
+<span class="k">for</span> <span class="n">layer_name</span><span class="p">,</span> <span class="n">nodes</span> <span class="ow">in</span> <span class="n">full_layers</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">G_ulysses</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">layer</span><span class="o">=</span><span class="n">layer_name</span><span class="p">)</span>
+
+<span class="c1"># Connect layers sequentially for symmetry</span>
+<span class="n">full_layer_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">full_layers</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">full_layer_names</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">source_layer</span> <span class="o">=</span> <span class="n">full_layers</span><span class="p">[</span><span class="n">full_layer_names</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+    <span class="n">target_layer</span> <span class="o">=</span> <span class="n">full_layers</span><span class="p">[</span><span class="n">full_layer_names</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]]</span>
+    <span class="k">for</span> <span class="n">source_node</span> <span class="ow">in</span> <span class="n">source_layer</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">target_node</span> <span class="ow">in</span> <span class="n">target_layer</span><span class="p">:</span>
+            <span class="n">G_ulysses</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">source_node</span><span class="p">,</span> <span class="n">target_node</span><span class="p">)</span>
+
+<span class="c1"># Define node positions for visualization</span>
+<span class="n">pos_ulysses</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">layer_spacing</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">node_spacing</span> <span class="o">=</span> <span class="mf">1.5</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">layer_name</span><span class="p">,</span> <span class="n">nodes</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">full_layers</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="n">i</span> <span class="o">*</span> <span class="n">layer_spacing</span> <span class="o">+</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">full_layer_names</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">layer_spacing</span> <span class="o">/</span> <span class="mi">2</span>  <span class="c1"># Center the graph vertically</span>
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nodes</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">j</span> <span class="o">*</span> <span class="n">node_spacing</span> <span class="o">-</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">node_spacing</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="n">pos_ulysses</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># Define specific colors for narrative threads</span>
+<span class="n">narrative_colors</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Stephen&quot;</span><span class="p">:</span> <span class="s2">&quot;lightskyblue&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Bloom&quot;</span><span class="p">:</span> <span class="s2">&quot;lightgreen&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Molly&quot;</span><span class="p">:</span> <span class="s2">&quot;lightcoral&quot;</span>
+<span class="p">}</span>
+
+<span class="c1"># Assign colors to nodes, default to gray</span>
+<span class="n">node_colors_ulysses</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">G_ulysses</span><span class="o">.</span><span class="n">nodes</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">narrative_colors</span><span class="p">:</span>
+        <span class="n">node_colors_ulysses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">narrative_colors</span><span class="p">[</span><span class="n">node</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">node_colors_ulysses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;lightgray&quot;</span><span class="p">)</span>  <span class="c1"># Default color</span>
+
+<span class="c1"># Highlight Bloom&#39;s journey through Dublin as a pathway</span>
+<span class="n">bloom_path</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;Morning&quot;</span><span class="p">,</span> <span class="s2">&quot;Sight&quot;</span><span class="p">,</span> <span class="s2">&quot;Places&quot;</span><span class="p">,</span> <span class="s2">&quot;Memories&quot;</span><span class="p">,</span> <span class="s2">&quot;Family&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Afternoon&quot;</span><span class="p">,</span> <span class="s2">&quot;Sound&quot;</span><span class="p">,</span> <span class="s2">&quot;Landmarks&quot;</span><span class="p">,</span> <span class="s2">&quot;Guilt&quot;</span><span class="p">,</span> <span class="s2">&quot;Strangers&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Evening&quot;</span><span class="p">,</span> <span class="s2">&quot;Taste&quot;</span><span class="p">,</span> <span class="s2">&quot;Pubs&quot;</span><span class="p">,</span> <span class="s2">&quot;Desires&quot;</span><span class="p">,</span> <span class="s2">&quot;Friends&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Night&quot;</span><span class="p">,</span> <span class="s2">&quot;Smell&quot;</span><span class="p">,</span> <span class="s2">&quot;Fantasies&quot;</span><span class="p">,</span> <span class="s2">&quot;Society&quot;</span><span class="p">,</span> <span class="s2">&quot;Euphoria&quot;</span>
+<span class="p">]</span>
+
+<span class="c1"># Update edge weights for Bloom&#39;s journey</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bloom_path</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">G_ulysses</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">bloom_path</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">bloom_path</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">weight</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># Adjust edge widths for visualization</span>
+<span class="n">edge_widths_ulysses</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">G_ulysses</span><span class="o">.</span><span class="n">edges</span><span class="p">():</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">bloom_path</span><span class="p">,</span> <span class="n">bloom_path</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
+        <span class="n">edge_widths_ulysses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># Highlighted path</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">edge_widths_ulysses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>  <span class="c1"># Default edge width</span>
+
+<span class="c1"># Draw the graph with narrative colors applied</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+
+<span class="c1"># Draw nodes and labels</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_nodes</span><span class="p">(</span><span class="n">G_ulysses</span><span class="p">,</span> <span class="n">pos_ulysses</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="n">node_colors_ulysses</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_labels</span><span class="p">(</span><span class="n">G_ulysses</span><span class="p">,</span> <span class="n">pos_ulysses</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">font_weight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">)</span>
+
+<span class="c1"># Draw edges with varying thickness</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">G_ulysses</span><span class="p">,</span> <span class="n">pos_ulysses</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">edge_widths_ulysses</span><span class="p">,</span> <span class="n">edge_color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+
+<span class="c1"># Add a title and clean up axes</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Neural Network Inspired by Ulysses: Bloom&#39;s Journey Highlighted&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/d680b57c0a9400b9c7f378e8f28520fe33063796178813d47c737a6f87ebad5f.png" src="../_images/d680b57c0a9400b9c7f378e8f28520fe33063796178813d47c737a6f87ebad5f.png" />
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Define input layers for the compression phase inspired by Ulysses</span>
+<span class="n">input_layers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Narratives&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Stephen&#39;</span><span class="p">,</span> <span class="s1">&#39;Bloom&#39;</span><span class="p">,</span> <span class="s1">&#39;Molly&#39;</span><span class="p">,</span> <span class="s1">&#39;Minor Characters&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Temporal Progression&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Morning&#39;</span><span class="p">,</span> <span class="s1">&#39;Afternoon&#39;</span><span class="p">,</span> <span class="s1">&#39;Evening&#39;</span><span class="p">,</span> <span class="s1">&#39;Night&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Dublin&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Places&#39;</span><span class="p">,</span> <span class="s1">&#39;Landmarks&#39;</span><span class="p">,</span> <span class="s1">&#39;Streets&#39;</span><span class="p">,</span> <span class="s1">&#39;Pubs&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Symbolic Motifs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Odyssey&#39;</span><span class="p">,</span> <span class="s1">&#39;Paralysis&#39;</span><span class="p">,</span> <span class="s1">&#39;Catholicism&#39;</span><span class="p">,</span> <span class="s1">&#39;Irish Nationalism&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Sensory Inputs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Sight&#39;</span><span class="p">,</span> <span class="s1">&#39;Sound&#39;</span><span class="p">,</span> <span class="s1">&#39;Taste&#39;</span><span class="p">,</span> <span class="s1">&#39;Touch&#39;</span><span class="p">,</span> <span class="s1">&#39;Smell&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Inner Worlds&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Memories&#39;</span><span class="p">,</span> <span class="s1">&#39;Desires&#39;</span><span class="p">,</span> <span class="s1">&#39;Guilt&#39;</span><span class="p">,</span> <span class="s1">&#39;Fantasies&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Social Interactions&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Family&#39;</span><span class="p">,</span> <span class="s1">&#39;Friends&#39;</span><span class="p">,</span> <span class="s1">&#39;Strangers&#39;</span><span class="p">,</span> <span class="s1">&#39;Society&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Artistic Layers&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Literature&#39;</span><span class="p">,</span> <span class="s1">&#39;Music&#39;</span><span class="p">,</span> <span class="s1">&#39;Painting&#39;</span><span class="p">,</span> <span class="s1">&#39;Drama&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># Define output layers for the decompression phase</span>
+<span class="n">output_layers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Character Arcs&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Stephen’s Growth&#39;</span><span class="p">,</span> <span class="s1">&#39;Bloom’s Reflection&#39;</span><span class="p">,</span> <span class="s1">&#39;Molly’s Independence&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Emotional States&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Melancholy&#39;</span><span class="p">,</span> <span class="s1">&#39;Hope&#39;</span><span class="p">,</span> <span class="s1">&#39;Resignation&#39;</span><span class="p">,</span> <span class="s1">&#39;Euphoria&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Symbolic Resonances&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Telemachus&#39;</span><span class="p">,</span> <span class="s1">&#39;Odysseus&#39;</span><span class="p">,</span> <span class="s1">&#39;Penelope&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Cultural Commentary&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Colonialism&#39;</span><span class="p">,</span> <span class="s1">&#39;Religion&#39;</span><span class="p">,</span> <span class="s1">&#39;Identity&#39;</span><span class="p">,</span> <span class="s1">&#39;Modernism&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Narrative Experimentation&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Stream of Consciousness&#39;</span><span class="p">,</span> <span class="s1">&#39;Parody&#39;</span><span class="p">,</span> <span class="s1">&#39;Monologue&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Temporal Convergence&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Past Meets Present&#39;</span><span class="p">,</span> <span class="s1">&#39;Momentary Epiphanies&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Societal Reflections&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Alienation&#39;</span><span class="p">,</span> <span class="s1">&#39;Connection&#39;</span><span class="p">,</span> <span class="s1">&#39;Rebellion&#39;</span><span class="p">,</span> <span class="s1">&#39;Tradition&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Overall Legacy&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Influence on Literature&#39;</span><span class="p">,</span> <span class="s1">&#39;Reader Interpretations&#39;</span><span class="p">,</span> <span class="s1">&#39;Cultural Impact&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># Merge the input and output layers to create a full network hierarchy</span>
+<span class="n">full_layers</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="n">input_layers</span><span class="p">,</span> <span class="o">**</span><span class="n">output_layers</span><span class="p">}</span>
+
+<span class="c1"># Initialize the graph</span>
+<span class="n">G_ulysses</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+
+<span class="c1"># Add nodes for each layer</span>
+<span class="k">for</span> <span class="n">layer_name</span><span class="p">,</span> <span class="n">nodes</span> <span class="ow">in</span> <span class="n">full_layers</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">G_ulysses</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">layer</span><span class="o">=</span><span class="n">layer_name</span><span class="p">)</span>
+
+<span class="c1"># Connect layers sequentially for symmetry</span>
+<span class="n">full_layer_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">full_layers</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">full_layer_names</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">source_layer</span> <span class="o">=</span> <span class="n">full_layers</span><span class="p">[</span><span class="n">full_layer_names</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+    <span class="n">target_layer</span> <span class="o">=</span> <span class="n">full_layers</span><span class="p">[</span><span class="n">full_layer_names</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]]</span>
+    <span class="k">for</span> <span class="n">source_node</span> <span class="ow">in</span> <span class="n">source_layer</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">target_node</span> <span class="ow">in</span> <span class="n">target_layer</span><span class="p">:</span>
+            <span class="n">G_ulysses</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">source_node</span><span class="p">,</span> <span class="n">target_node</span><span class="p">)</span>
+
+<span class="c1"># Define node positions for visualization</span>
+<span class="n">pos_ulysses</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">layer_spacing</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">node_spacing</span> <span class="o">=</span> <span class="mf">1.5</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">layer_name</span><span class="p">,</span> <span class="n">nodes</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">full_layers</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="n">i</span> <span class="o">*</span> <span class="n">layer_spacing</span> <span class="o">+</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">full_layer_names</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">layer_spacing</span> <span class="o">/</span> <span class="mi">2</span>  <span class="c1"># Center the graph vertically</span>
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nodes</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">j</span> <span class="o">*</span> <span class="n">node_spacing</span> <span class="o">-</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">node_spacing</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="n">pos_ulysses</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># Define specific colors for narrative threads</span>
+<span class="n">narrative_colors</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Stephen&quot;</span><span class="p">:</span> <span class="s2">&quot;lightskyblue&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Bloom&quot;</span><span class="p">:</span> <span class="s2">&quot;lightgreen&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Molly&quot;</span><span class="p">:</span> <span class="s2">&quot;lightcoral&quot;</span>
+<span class="p">}</span>
+
+<span class="c1"># Assign colors to nodes, default to gray</span>
+<span class="n">node_colors_ulysses</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">G_ulysses</span><span class="o">.</span><span class="n">nodes</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">narrative_colors</span><span class="p">:</span>
+        <span class="n">node_colors_ulysses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">narrative_colors</span><span class="p">[</span><span class="n">node</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">node_colors_ulysses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;lightgray&quot;</span><span class="p">)</span>  <span class="c1"># Default color</span>
+
+<span class="c1"># Add Mulligan as a key narrative node</span>
+<span class="k">if</span> <span class="s2">&quot;Mulligan&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">G_ulysses</span><span class="p">:</span>
+    <span class="n">G_ulysses</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">&quot;Mulligan&quot;</span><span class="p">,</span> <span class="n">layer</span><span class="o">=</span><span class="s2">&quot;Narratives&quot;</span><span class="p">)</span>
+
+<span class="c1"># Add Mulligan&#39;s position to the layout</span>
+<span class="k">if</span> <span class="s2">&quot;Mulligan&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">pos_ulysses</span><span class="p">:</span>
+    <span class="n">layer_name</span> <span class="o">=</span> <span class="s2">&quot;Narratives&quot;</span>  <span class="c1"># Assign Mulligan to the Narratives layer</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="n">full_layer_names</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">layer_name</span><span class="p">)</span> <span class="o">*</span> <span class="n">layer_spacing</span> <span class="o">+</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">full_layer_names</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">layer_spacing</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Place Mulligan in the center of the layer</span>
+    <span class="n">pos_ulysses</span><span class="p">[</span><span class="s2">&quot;Mulligan&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># Define key connections for Mulligan</span>
+<span class="n">mulligan_connections</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">&quot;Mulligan&quot;</span><span class="p">,</span> <span class="s2">&quot;Stephen&quot;</span><span class="p">),</span>  <span class="c1"># His connection as a foil to Stephen</span>
+    <span class="p">(</span><span class="s2">&quot;Mulligan&quot;</span><span class="p">,</span> <span class="s2">&quot;Taste&quot;</span><span class="p">),</span>  <span class="c1"># Symbolic link to sensory detail (e.g., breakfast preparation)</span>
+    <span class="p">(</span><span class="s2">&quot;Mulligan&quot;</span><span class="p">,</span> <span class="s2">&quot;Sound&quot;</span><span class="p">),</span>  <span class="c1"># His performative, song-filled banter</span>
+    <span class="p">(</span><span class="s2">&quot;Mulligan&quot;</span><span class="p">,</span> <span class="s2">&quot;Paralysis&quot;</span><span class="p">),</span>  <span class="c1"># His irreverence as a critique of Stephen&#39;s ideals</span>
+    <span class="p">(</span><span class="s2">&quot;Mulligan&quot;</span><span class="p">,</span> <span class="s2">&quot;Odyssey&quot;</span><span class="p">),</span>  <span class="c1"># His role as a Penelope-figure in Stephen’s story</span>
+    <span class="p">(</span><span class="s2">&quot;Mulligan&quot;</span><span class="p">,</span> <span class="s2">&quot;Friends&quot;</span><span class="p">),</span>  <span class="c1"># Social connection and tensions</span>
+    <span class="p">(</span><span class="s2">&quot;Mulligan&quot;</span><span class="p">,</span> <span class="s2">&quot;Drama&quot;</span><span class="p">),</span>  <span class="c1"># Performative aspects of his personality</span>
+    <span class="p">(</span><span class="s2">&quot;Stephen&quot;</span><span class="p">,</span> <span class="s2">&quot;Alienation&quot;</span><span class="p">),</span>  <span class="c1"># How Mulligan exacerbates Stephen&#39;s feelings of isolation</span>
+<span class="p">]</span>
+
+<span class="c1"># Add the connections to the graph</span>
+<span class="n">G_ulysses</span><span class="o">.</span><span class="n">add_edges_from</span><span class="p">(</span><span class="n">mulligan_connections</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># Update colors for Mulligan and related nodes</span>
+<span class="n">narrative_colors</span><span class="p">[</span><span class="s2">&quot;Mulligan&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;gold&quot;</span>  <span class="c1"># Highlight Mulligan distinctly</span>
+
+<span class="c1"># Recalculate node colors with Mulligan included</span>
+<span class="n">node_colors_mulligan</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">narrative_colors</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="k">if</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">narrative_colors</span> <span class="k">else</span> <span class="s2">&quot;lightgray&quot;</span>
+    <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">G_ulysses</span><span class="o">.</span><span class="n">nodes</span><span class="p">()</span>
+<span class="p">]</span>
+
+<span class="c1"># Highlight Mulligan&#39;s path (edges)</span>
+<span class="n">mulligan_path</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Mulligan&quot;</span><span class="p">,</span> <span class="s2">&quot;Taste&quot;</span><span class="p">,</span> <span class="s2">&quot;Sound&quot;</span><span class="p">,</span> <span class="s2">&quot;Paralysis&quot;</span><span class="p">,</span> <span class="s2">&quot;Drama&quot;</span><span class="p">,</span> <span class="s2">&quot;Alienation&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mulligan_path</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">G_ulysses</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">mulligan_path</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">mulligan_path</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">weight</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+
+<span class="c1"># Adjust edge widths for the updated Mulligan pathways</span>
+<span class="n">edge_widths_mulligan</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="mi">3</span> <span class="k">if</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">mulligan_path</span><span class="p">,</span> <span class="n">mulligan_path</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="ow">or</span> <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="n">mulligan_connections</span> <span class="k">else</span> <span class="mf">0.5</span>
+    <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">G_ulysses</span><span class="o">.</span><span class="n">edges</span><span class="p">()</span>
+<span class="p">]</span>
+
+<span class="c1"># Draw the updated graph with Mulligan&#39;s role highlighted</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">32</span><span class="p">))</span>
+
+<span class="c1"># Draw nodes and labels</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_nodes</span><span class="p">(</span><span class="n">G_ulysses</span><span class="p">,</span> <span class="n">pos_ulysses</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="n">node_colors_mulligan</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_labels</span><span class="p">(</span><span class="n">G_ulysses</span><span class="p">,</span> <span class="n">pos_ulysses</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">font_weight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">)</span>
+
+<span class="c1"># Draw edges with varying thickness</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">G_ulysses</span><span class="p">,</span> <span class="n">pos_ulysses</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">edge_widths_mulligan</span><span class="p">,</span> <span class="n">edge_color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+
+<span class="c1"># Add a title and clean up axes</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Neural Network Inspired by Ulysses: Highlighting Malachi Mulligan&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/7d0954fbcf876ef1eabb516fd2263c25a7e9b9368fcfbabe0e2f39503af920f2.png" src="../_images/7d0954fbcf876ef1eabb516fd2263c25a7e9b9368fcfbabe0e2f39503af920f2.png" />
+</div>
+</div>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -3718,6 +4010,10 @@ While the network grows, it is important to recognize the limitations imposed by
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#heres-the-revised-implementation">Here’s the revised implementation:</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#whats-new">What’s New:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#network-transformed-into-ulysses-narratives">Network Transformed into Ulysses Narratives</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#highlighting-mulligan-in-the-network">Highlighting Mulligan in the Network</a></li>
 </ul>
 </li>
 </ul>
