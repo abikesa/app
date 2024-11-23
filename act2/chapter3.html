@@ -4094,6 +4094,105 @@ Each pathway reflects an aspect of human transcendence:</p>
 <li><p><strong>Audition</strong> will elevate our creativity (neuroscience of music, sound-based therapies).</p></li>
 </ul>
 <p>These pathways are not just sensory—they are metaphors for humanity’s capacity to perceive, adapt, and thrive. They shape our reality and guide us toward futures where the infinite becomes tangible.</p>
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Define expanded layers to reflect complexity from subatomic to cosmic levels</span>
+<span class="n">expanded_layers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Subatomic Level&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Quarks&#39;</span><span class="p">,</span> <span class="s1">&#39;Leptons&#39;</span><span class="p">,</span> <span class="s1">&#39;Bosons&#39;</span><span class="p">,</span> <span class="s1">&#39;Higgs Field&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Atomic Level&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Electrons&#39;</span><span class="p">,</span> <span class="s1">&#39;Protons&#39;</span><span class="p">,</span> <span class="s1">&#39;Neutrons&#39;</span><span class="p">,</span> <span class="s1">&#39;Isotopes&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Molecular Level&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Covalent Bonds&#39;</span><span class="p">,</span> <span class="s1">&#39;Ionic Bonds&#39;</span><span class="p">,</span> <span class="s1">&#39;Molecular Orbitals&#39;</span><span class="p">,</span> <span class="s1">&#39;Van der Waals Forces&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Inorganic Chemistry&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Salts&#39;</span><span class="p">,</span> <span class="s1">&#39;Metals&#39;</span><span class="p">,</span> <span class="s1">&#39;Nonmetals&#39;</span><span class="p">,</span> <span class="s1">&#39;Transition Metals&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Organic Chemistry&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Hydrocarbons&#39;</span><span class="p">,</span> <span class="s1">&#39;Functional Groups&#39;</span><span class="p">,</span> <span class="s1">&#39;Polymers&#39;</span><span class="p">,</span> <span class="s1">&#39;Enzymes&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Cellular Level&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Organelles&#39;</span><span class="p">,</span> <span class="s1">&#39;Cytoplasm&#39;</span><span class="p">,</span> <span class="s1">&#39;Membranes&#39;</span><span class="p">,</span> <span class="s1">&#39;Cytoskeleton&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Tissue Level&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Epithelial&#39;</span><span class="p">,</span> <span class="s1">&#39;Connective&#39;</span><span class="p">,</span> <span class="s1">&#39;Muscle&#39;</span><span class="p">,</span> <span class="s1">&#39;Nervous&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Organ Level&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Heart&#39;</span><span class="p">,</span> <span class="s1">&#39;Brain&#39;</span><span class="p">,</span> <span class="s1">&#39;Liver&#39;</span><span class="p">,</span> <span class="s1">&#39;Lungs&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Systems Level&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Nervous&#39;</span><span class="p">,</span> <span class="s1">&#39;Endocrine&#39;</span><span class="p">,</span> <span class="s1">&#39;Circulatory&#39;</span><span class="p">,</span> <span class="s1">&#39;Digestive&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Individual Level&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Behavior&#39;</span><span class="p">,</span> <span class="s1">&#39;Cognition&#39;</span><span class="p">,</span> <span class="s1">&#39;Emotions&#39;</span><span class="p">,</span> <span class="s1">&#39;Personality&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Interpersonal Dynamics&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Relationships&#39;</span><span class="p">,</span> <span class="s1">&#39;Communication&#39;</span><span class="p">,</span> <span class="s1">&#39;Empathy&#39;</span><span class="p">,</span> <span class="s1">&#39;Conflict&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Societal Level&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Culture&#39;</span><span class="p">,</span> <span class="s1">&#39;Politics&#39;</span><span class="p">,</span> <span class="s1">&#39;Economics&#39;</span><span class="p">,</span> <span class="s1">&#39;Technology&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Ecological Level&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Population Dynamics&#39;</span><span class="p">,</span> <span class="s1">&#39;Food Webs&#39;</span><span class="p">,</span> <span class="s1">&#39;Ecosystem Services&#39;</span><span class="p">,</span> <span class="s1">&#39;Biodiversity&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Environmental Level&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Climate Change&#39;</span><span class="p">,</span> <span class="s1">&#39;Pollution&#39;</span><span class="p">,</span> <span class="s1">&#39;Resource Cycles&#39;</span><span class="p">,</span> <span class="s1">&#39;Habitat Loss&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;Cosmic Level&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Planets&#39;</span><span class="p">,</span> <span class="s1">&#39;Stars&#39;</span><span class="p">,</span> <span class="s1">&#39;Galaxies&#39;</span><span class="p">,</span> <span class="s1">&#39;Dark Matter&#39;</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># Initialize the graph</span>
+<span class="n">G_expanded</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+
+<span class="c1"># Add nodes for each expanded layer</span>
+<span class="k">for</span> <span class="n">layer_name</span><span class="p">,</span> <span class="n">nodes</span> <span class="ow">in</span> <span class="n">expanded_layers</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">G_expanded</span><span class="o">.</span><span class="n">add_nodes_from</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">layer</span><span class="o">=</span><span class="n">layer_name</span><span class="p">)</span>
+
+<span class="c1"># Connect layers sequentially for symmetry and complexity flow</span>
+<span class="n">expanded_layer_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">expanded_layers</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">expanded_layer_names</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">source_layer</span> <span class="o">=</span> <span class="n">expanded_layers</span><span class="p">[</span><span class="n">expanded_layer_names</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+    <span class="n">target_layer</span> <span class="o">=</span> <span class="n">expanded_layers</span><span class="p">[</span><span class="n">expanded_layer_names</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]]</span>
+    <span class="k">for</span> <span class="n">source_node</span> <span class="ow">in</span> <span class="n">source_layer</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">target_node</span> <span class="ow">in</span> <span class="n">target_layer</span><span class="p">:</span>
+            <span class="n">G_expanded</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">source_node</span><span class="p">,</span> <span class="n">target_node</span><span class="p">)</span>
+
+<span class="c1"># Define node positions for visualization</span>
+<span class="n">pos_expanded</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">layer_spacing</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">node_spacing</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">compression_layer_index</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">expanded_layer_names</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">layer_name</span><span class="p">,</span> <span class="n">nodes</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">expanded_layers</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="n">compression_layer_index</span><span class="p">)</span> <span class="o">*</span> <span class="n">layer_spacing</span>  <span class="c1"># Center graph vertically around the compression layer</span>
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nodes</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">j</span> <span class="o">*</span> <span class="n">node_spacing</span> <span class="o">-</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">node_spacing</span> <span class="o">/</span> <span class="mi">2</span>  <span class="c1"># Horizontal positioning</span>
+        <span class="n">pos_expanded</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># Define uniform edge color</span>
+<span class="n">edge_color</span> <span class="o">=</span> <span class="s2">&quot;gray&quot;</span>
+
+<span class="c1"># Define uniform node color</span>
+<span class="n">node_color</span> <span class="o">=</span> <span class="s2">&quot;lightgray&quot;</span>
+
+<span class="c1"># Draw the symmetrical graph</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">))</span>
+
+<span class="c1"># Draw nodes in gray</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_nodes</span><span class="p">(</span>
+    <span class="n">G_expanded</span><span class="p">,</span> <span class="n">pos_expanded</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="n">node_color</span>
+<span class="p">)</span>
+
+<span class="c1"># Draw labels</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_labels</span><span class="p">(</span>
+    <span class="n">G_expanded</span><span class="p">,</span> <span class="n">pos_expanded</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">font_weight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Draw edges in uniform gray</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edges</span><span class="p">(</span>
+    <span class="n">G_expanded</span><span class="p">,</span> <span class="n">pos_expanded</span><span class="p">,</span> <span class="n">edge_color</span><span class="o">=</span><span class="n">edge_color</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.5</span>
+<span class="p">)</span>
+
+<span class="c1"># Add a title and clean up axes</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Symmetrical Neural Network with Compression Layer Highlighted&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<details class="hide below-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell output</span>
+<span class="expanded">Hide code cell output</span>
+</summary>
+<div class="cell_output docutils container">
+<img alt="../_images/6cf01618626de14c278907c68e04887527f0b0b341f8309879a75750fd5ca720.png" src="../_images/6cf01618626de14c278907c68e04887527f0b0b341f8309879a75750fd5ca720.png" />
+</div>
+</details>
+</div>
 </section>
 </section>
 </section>
