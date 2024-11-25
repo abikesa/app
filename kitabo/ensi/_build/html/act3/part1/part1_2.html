@@ -61,6 +61,8 @@
     <script src="../../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'act3/part1/part1_2';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -396,17 +398,21 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diving-deeper-into-quantum-biology-and-its-implications">Diving Deeper into Quantum Biology and Its Implications</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#photosynthesis-and-quantum-coherence"><strong>1. Photosynthesis and Quantum Coherence</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enzyme-catalysis-and-quantum-tunneling"><strong>2. Enzyme Catalysis and Quantum Tunneling</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dna-mutations-and-proton-tunneling"><strong>3. DNA Mutations and Proton Tunneling</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#magnetoreception-and-quantum-entanglement"><strong>4. Magnetoreception and Quantum Entanglement</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#olfaction-and-vibrational-quantum-theory"><strong>5. Olfaction and Vibrational Quantum Theory</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-effects-in-neural-processing"><strong>6. Quantum Effects in Neural Processing</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-biology-in-aging-and-medicine"><strong>7. Quantum Biology in Aging and Medicine</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#challenges-in-quantum-biology"><strong>Challenges in Quantum Biology</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#future-directions-in-quantum-biology"><strong>Future Directions in Quantum Biology</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-thoughts"><strong>Final Thoughts</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-biology">Quantum Biology</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diving-deeper-into-quantum-biology-and-its-implications">Diving Deeper into Quantum Biology and Its Implications</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#photosynthesis-and-quantum-coherence"><strong>1. Photosynthesis and Quantum Coherence</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enzyme-catalysis-and-quantum-tunneling"><strong>2. Enzyme Catalysis and Quantum Tunneling</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dna-mutations-and-proton-tunneling"><strong>3. DNA Mutations and Proton Tunneling</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#magnetoreception-and-quantum-entanglement"><strong>4. Magnetoreception and Quantum Entanglement</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#olfaction-and-vibrational-quantum-theory"><strong>5. Olfaction and Vibrational Quantum Theory</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-effects-in-neural-processing"><strong>6. Quantum Effects in Neural Processing</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-biology-in-aging-and-medicine"><strong>7. Quantum Biology in Aging and Medicine</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#challenges-in-quantum-biology"><strong>Challenges in Quantum Biology</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#future-directions-in-quantum-biology"><strong>Future Directions in Quantum Biology</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#final-thoughts"><strong>Final Thoughts</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#peter-thiel">Peter Thiel</a></li>
 </ul>
             </nav>
         </div>
@@ -420,13 +426,15 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="chapter-2">
 <h1>Chapter 2<a class="headerlink" href="#chapter-2" title="Permalink to this heading">#</a></h1>
+<section id="quantum-biology">
+<h2>Quantum Biology<a class="headerlink" href="#quantum-biology" title="Permalink to this heading">#</a></h2>
 <section id="diving-deeper-into-quantum-biology-and-its-implications">
-<h2>Diving Deeper into Quantum Biology and Its Implications<a class="headerlink" href="#diving-deeper-into-quantum-biology-and-its-implications" title="Permalink to this heading">#</a></h2>
+<h3>Diving Deeper into Quantum Biology and Its Implications<a class="headerlink" href="#diving-deeper-into-quantum-biology-and-its-implications" title="Permalink to this heading">#</a></h3>
 <p>Quantum mechanics in biology is a frontier that could fundamentally reshape how we understand life. Let’s delve deeper into some key areas, breaking down the mechanics, evidence, and implications.</p>
-<hr class="docutils" />
 </section>
+<hr class="docutils" />
 <section id="photosynthesis-and-quantum-coherence">
-<h2><strong>1. Photosynthesis and Quantum Coherence</strong><a class="headerlink" href="#photosynthesis-and-quantum-coherence" title="Permalink to this heading">#</a></h2>
+<h3><strong>1. Photosynthesis and Quantum Coherence</strong><a class="headerlink" href="#photosynthesis-and-quantum-coherence" title="Permalink to this heading">#</a></h3>
 <p><strong>Mechanics</strong>:</p>
 <ul class="simple">
 <li><p>Photosynthesis involves the capture of light energy by pigment-protein complexes in plants, algae, and some bacteria.</p></li>
@@ -443,10 +451,10 @@ document.write(`
 <li><p><strong>Bio-inspired technologies</strong>: Understanding this process could lead to ultra-efficient solar panels or artificial photosynthesis systems.</p></li>
 <li><p><strong>Health applications</strong>: Dysfunction in similar energy transfer mechanisms in mitochondria could be studied through the lens of quantum coherence.</p></li>
 </ul>
-<hr class="docutils" />
 </section>
+<hr class="docutils" />
 <section id="enzyme-catalysis-and-quantum-tunneling">
-<h2><strong>2. Enzyme Catalysis and Quantum Tunneling</strong><a class="headerlink" href="#enzyme-catalysis-and-quantum-tunneling" title="Permalink to this heading">#</a></h2>
+<h3><strong>2. Enzyme Catalysis and Quantum Tunneling</strong><a class="headerlink" href="#enzyme-catalysis-and-quantum-tunneling" title="Permalink to this heading">#</a></h3>
 <p><strong>Mechanics</strong>:</p>
 <ul class="simple">
 <li><p>Enzymes catalyze biochemical reactions by lowering activation energy barriers.</p></li>
@@ -463,10 +471,10 @@ document.write(`
 <li><p><strong>Drug design</strong>: Tunneling insights can optimize enzyme inhibitors.</p></li>
 <li><p><strong>Disease mechanisms</strong>: Misfolded proteins or enzyme dysfunctions might involve quantum disruptions, offering new therapeutic targets.</p></li>
 </ul>
-<hr class="docutils" />
 </section>
+<hr class="docutils" />
 <section id="dna-mutations-and-proton-tunneling">
-<h2><strong>3. DNA Mutations and Proton Tunneling</strong><a class="headerlink" href="#dna-mutations-and-proton-tunneling" title="Permalink to this heading">#</a></h2>
+<h3><strong>3. DNA Mutations and Proton Tunneling</strong><a class="headerlink" href="#dna-mutations-and-proton-tunneling" title="Permalink to this heading">#</a></h3>
 <p><strong>Mechanics</strong>:</p>
 <ul class="simple">
 <li><p>Protons in DNA base pairs (e.g., adenine-thymine or guanine-cytosine) can quantum tunnel between different positions, causing tautomeric shifts.</p></li>
@@ -482,10 +490,10 @@ document.write(`
 <li><p><strong>Cancer research</strong>: Spontaneous mutations driven by tunneling may underlie some forms of genetic instability in cancer.</p></li>
 <li><p><strong>Evolution</strong>: Quantum-driven mutations may have been pivotal in creating genetic diversity.</p></li>
 </ul>
-<hr class="docutils" />
 </section>
+<hr class="docutils" />
 <section id="magnetoreception-and-quantum-entanglement">
-<h2><strong>4. Magnetoreception and Quantum Entanglement</strong><a class="headerlink" href="#magnetoreception-and-quantum-entanglement" title="Permalink to this heading">#</a></h2>
+<h3><strong>4. Magnetoreception and Quantum Entanglement</strong><a class="headerlink" href="#magnetoreception-and-quantum-entanglement" title="Permalink to this heading">#</a></h3>
 <p><strong>Mechanics</strong>:</p>
 <ul class="simple">
 <li><p>Certain animals, such as birds, use Earth’s magnetic field for navigation.</p></li>
@@ -501,10 +509,10 @@ document.write(`
 <li><p><strong>Quantum-inspired sensors</strong>: Understanding magnetoreception could lead to highly sensitive magnetic field detectors.</p></li>
 <li><p><strong>Human applications</strong>: While less studied, humans may have cryptochrome proteins, raising questions about subtle magnetic influences on health or behavior.</p></li>
 </ul>
-<hr class="docutils" />
 </section>
+<hr class="docutils" />
 <section id="olfaction-and-vibrational-quantum-theory">
-<h2><strong>5. Olfaction and Vibrational Quantum Theory</strong><a class="headerlink" href="#olfaction-and-vibrational-quantum-theory" title="Permalink to this heading">#</a></h2>
+<h3><strong>5. Olfaction and Vibrational Quantum Theory</strong><a class="headerlink" href="#olfaction-and-vibrational-quantum-theory" title="Permalink to this heading">#</a></h3>
 <p><strong>Mechanics</strong>:</p>
 <ul class="simple">
 <li><p>Traditional theories of smell suggest shape-based lock-and-key recognition of odorant molecules by receptors.</p></li>
@@ -520,10 +528,10 @@ document.write(`
 <li><p><strong>Perfume industry</strong>: Quantum olfaction could revolutionize scent design.</p></li>
 <li><p><strong>Medical diagnostics</strong>: Quantum-based sensors might detect disease markers through vibrational “fingerprints.”</p></li>
 </ul>
-<hr class="docutils" />
 </section>
+<hr class="docutils" />
 <section id="quantum-effects-in-neural-processing">
-<h2><strong>6. Quantum Effects in Neural Processing</strong><a class="headerlink" href="#quantum-effects-in-neural-processing" title="Permalink to this heading">#</a></h2>
+<h3><strong>6. Quantum Effects in Neural Processing</strong><a class="headerlink" href="#quantum-effects-in-neural-processing" title="Permalink to this heading">#</a></h3>
 <p><strong>Mechanics</strong>:</p>
 <ul class="simple">
 <li><p>The Penrose-Hameroff Orch-OR theory suggests that consciousness arises from quantum coherence in microtubules, structural components of neurons.</p></li>
@@ -539,10 +547,10 @@ document.write(`
 <li><p><strong>Understanding consciousness</strong>: If proven, this could bridge physics and neuroscience in explaining subjective experience.</p></li>
 <li><p><strong>Neurodegenerative diseases</strong>: Quantum disruptions in neural processes might underlie conditions like Alzheimer’s.</p></li>
 </ul>
-<hr class="docutils" />
 </section>
+<hr class="docutils" />
 <section id="quantum-biology-in-aging-and-medicine">
-<h2><strong>7. Quantum Biology in Aging and Medicine</strong><a class="headerlink" href="#quantum-biology-in-aging-and-medicine" title="Permalink to this heading">#</a></h2>
+<h3><strong>7. Quantum Biology in Aging and Medicine</strong><a class="headerlink" href="#quantum-biology-in-aging-and-medicine" title="Permalink to this heading">#</a></h3>
 <p><strong>Mechanics</strong>:</p>
 <ul class="simple">
 <li><p>Aging involves gradual loss of cellular and molecular function, often driven by oxidative damage and mitochondrial dysfunction.</p></li>
@@ -558,10 +566,10 @@ document.write(`
 <li><p><strong>Anti-aging interventions</strong>: Targeting quantum inefficiencies in mitochondria could slow aging.</p></li>
 <li><p><strong>Regenerative medicine</strong>: Quantum principles might guide tissue engineering and repair.</p></li>
 </ul>
-<hr class="docutils" />
 </section>
+<hr class="docutils" />
 <section id="challenges-in-quantum-biology">
-<h2><strong>Challenges in Quantum Biology</strong><a class="headerlink" href="#challenges-in-quantum-biology" title="Permalink to this heading">#</a></h2>
+<h3><strong>Challenges in Quantum Biology</strong><a class="headerlink" href="#challenges-in-quantum-biology" title="Permalink to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p><strong>Measurement Difficulties</strong>:</p>
 <ul class="simple">
@@ -579,10 +587,10 @@ document.write(`
 </ul>
 </li>
 </ol>
-<hr class="docutils" />
 </section>
+<hr class="docutils" />
 <section id="future-directions-in-quantum-biology">
-<h2><strong>Future Directions in Quantum Biology</strong><a class="headerlink" href="#future-directions-in-quantum-biology" title="Permalink to this heading">#</a></h2>
+<h3><strong>Future Directions in Quantum Biology</strong><a class="headerlink" href="#future-directions-in-quantum-biology" title="Permalink to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p><strong>Quantum Computing in Biology</strong>:</p>
 <ul class="simple">
@@ -600,11 +608,32 @@ document.write(`
 </ul>
 </li>
 </ol>
-<hr class="docutils" />
 </section>
+<hr class="docutils" />
 <section id="final-thoughts">
-<h2><strong>Final Thoughts</strong><a class="headerlink" href="#final-thoughts" title="Permalink to this heading">#</a></h2>
+<h3><strong>Final Thoughts</strong><a class="headerlink" href="#final-thoughts" title="Permalink to this heading">#</a></h3>
 <p>Quantum biology is an evolving field that bridges the smallest scales of existence with the complexity of life. Its potential to revolutionize medicine, energy, and our understanding of consciousness is immense, but it also challenges our classical view of biology. If you’d like to explore any specific phenomenon or application further, let me know—I’d love to dive even deeper!</p>
+</section>
+</section>
+<section id="peter-thiel">
+<h2>Peter Thiel<a class="headerlink" href="#peter-thiel" title="Permalink to this heading">#</a></h2>
+<iframe src="https://www.youtube.com/embed/1T-RkxC5pVU"></iframe>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="figures/blanche.*"><img alt="figures/blanche.*" src="figures/blanche.*" style="width: 1px; height: 1px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text"><em>Why is the insurance premium so inflated?</em> That is, if we view education as an insurance premium! Are the cracks in society so big that its worth it purchasing such insurance?. Viewed through “Tarlsea” - transforming available resources through luck (adversarial), skill (iterative), education (cooperative) &amp; into agency (meaning), education has targeted youth to transform them into “sound” adults who continue well-established traditions of productivity and incrementally improve these. Peter Thiel doubts such a mandate can explain the inflationary pressures on higher education tuition and he explores alternative views. His views fit neatly into our <span class="math notranslate nohighlight">\(R^3\)</span> “transfomer”.</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://abikesa.github.io/zarathustra/act3/part3/part3_2.html#r-3"><span class="math notranslate nohighlight">\(R^3\)</span></a> &amp;</p>
+</div>
+<ul class="simple">
+<li><p>Reward (Consumption)</p></li>
+<li><p>Risk (Tournament-Venture-Insurance)</p></li>
+<li><p>Resource (Youth)</p></li>
+</ul>
+<p>Civilization to the average man is “insurance” against the tempestuous sea. But this is a recurrent fantasy in light of history, which is mostly about hard-earned adversarial and iterative transformations more akin to tournaments and ventures.</p>
 </section>
 </section>
 
@@ -672,17 +701,21 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diving-deeper-into-quantum-biology-and-its-implications">Diving Deeper into Quantum Biology and Its Implications</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#photosynthesis-and-quantum-coherence"><strong>1. Photosynthesis and Quantum Coherence</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enzyme-catalysis-and-quantum-tunneling"><strong>2. Enzyme Catalysis and Quantum Tunneling</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dna-mutations-and-proton-tunneling"><strong>3. DNA Mutations and Proton Tunneling</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#magnetoreception-and-quantum-entanglement"><strong>4. Magnetoreception and Quantum Entanglement</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#olfaction-and-vibrational-quantum-theory"><strong>5. Olfaction and Vibrational Quantum Theory</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-effects-in-neural-processing"><strong>6. Quantum Effects in Neural Processing</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-biology-in-aging-and-medicine"><strong>7. Quantum Biology in Aging and Medicine</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#challenges-in-quantum-biology"><strong>Challenges in Quantum Biology</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#future-directions-in-quantum-biology"><strong>Future Directions in Quantum Biology</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-thoughts"><strong>Final Thoughts</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-biology">Quantum Biology</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diving-deeper-into-quantum-biology-and-its-implications">Diving Deeper into Quantum Biology and Its Implications</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#photosynthesis-and-quantum-coherence"><strong>1. Photosynthesis and Quantum Coherence</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enzyme-catalysis-and-quantum-tunneling"><strong>2. Enzyme Catalysis and Quantum Tunneling</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dna-mutations-and-proton-tunneling"><strong>3. DNA Mutations and Proton Tunneling</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#magnetoreception-and-quantum-entanglement"><strong>4. Magnetoreception and Quantum Entanglement</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#olfaction-and-vibrational-quantum-theory"><strong>5. Olfaction and Vibrational Quantum Theory</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-effects-in-neural-processing"><strong>6. Quantum Effects in Neural Processing</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-biology-in-aging-and-medicine"><strong>7. Quantum Biology in Aging and Medicine</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#challenges-in-quantum-biology"><strong>Challenges in Quantum Biology</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#future-directions-in-quantum-biology"><strong>Future Directions in Quantum Biology</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#final-thoughts"><strong>Final Thoughts</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#peter-thiel">Peter Thiel</a></li>
 </ul>
   </nav></div>
 
