@@ -8,7 +8,7 @@ OUTPUT_DIR="$SOURCE_DIR/converted_jpegs"
 mkdir -p "$OUTPUT_DIR"
 
 # Loop through all .heic files and convert them to .jpeg
-for file in "$SOURCE_DIR"/*.heic; do
+for file in "$SOURCE_DIR"/*.HEIC; do
     if [[ -f "$file" ]]; then
         filename=$(basename -- "$file")
         output_filename="${filename%.*}.jpeg"
